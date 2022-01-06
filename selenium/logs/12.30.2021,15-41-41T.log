@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "C:\Users\sopnk\PycharmProjects\SeleniumTest\testRevosoft\leftBar.py", line 67, in <module>
+    driver.find_element_by_id("username").send_keys(username)
+  File "C:\Users\sopnk\PycharmProjects\SeleniumTest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 540, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT,
+  File "C:\Users\sopnk\PycharmProjects\SeleniumTest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 710, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\sopnk\PycharmProjects\SeleniumTest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 424, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\sopnk\PycharmProjects\SeleniumTest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=96.0.4664.110)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x01036903+2517251]
+	Ordinal0 [0x00FCF8E1+2095329]
+	Ordinal0 [0x00ED2710+1058576]
+	Ordinal0 [0x00EF8993+1214867]
+	Ordinal0 [0x00EF80DF+1212639]
+	Ordinal0 [0x00F164D3+1336531]
+	Ordinal0 [0x00EF3A36+1194550]
+	Ordinal0 [0x00F165BA+1336762]
+	Ordinal0 [0x00F25BBF+1399743]
+	Ordinal0 [0x00F1639B+1336219]
+	Ordinal0 [0x00EF27A7+1189799]
+	Ordinal0 [0x00EF3609+1193481]
+	GetHandleVerifier [0x011C5904+1577972]
+	GetHandleVerifier [0x01270B97+2279047]
+	GetHandleVerifier [0x010C6D09+534521]
+	GetHandleVerifier [0x010C5DB9+530601]
+	Ordinal0 [0x00FD4FF9+2117625]
+	Ordinal0 [0x00FD98A8+2136232]
+	Ordinal0 [0x00FD99E2+2136546]
+	Ordinal0 [0x00FE3541+2176321]
+	BaseThreadInitThunk [0x76DD6739+25]
+	RtlGetFullPathName_UEx [0x77B78AFF+1215]
+	RtlGetFullPathName_UEx [0x77B78ACD+1165]
+

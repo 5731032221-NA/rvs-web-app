@@ -1,0 +1,63 @@
+Report Document 12.30.2021,15-45-23
+imize Window Pass
+12-30-2021 15:45:26 | INFO | Test Get Path Pass
+12-30-2021 15:45:26 | INFO | Test Username by ID Pass
+12-30-2021 15:45:27 | INFO | Test Password by ID Pass
+12-30-2021 15:45:28 | INFO | Test Login by Name Pass
+12-30-2021 15:45:30 | INFO | Test devicecode by ID Pass
+12-30-2021 15:45:31 | INFO | Test devicename by ID Pass
+12-30-2021 15:45:32 | INFO | Test save by ID Pass
+12-30-2021 15:45:33 | INFO | Test username by ID Pass
+12-30-2021 15:45:34 | INFO | Test password by ID Pass
+12-30-2021 15:45:35 | INFO | Test login by ID Pass
+12-30-2021 15:45:36 | INFO | Test selectpropertybutton by ID Pass
+12-30-2021 15:45:39 | INFO | Test opendrawer Pass
+12-30-2021 15:45:42 | INFO | Test handleLeftMenu Pass
+12-30-2021 15:45:44 | INFO | Test opendrawer Pass
+12-30-2021 15:45:46 | INFO | Test DB Pass
+12-30-2021 15:45:48 | INFO | Test tab-frontdesk Pass
+12-30-2021 15:45:50 | INFO | Test tab-reservation Pass
+12-30-2021 15:45:52 | INFO | Test tab-cashier Pass
+12-30-2021 15:45:55 | INFO | Test tab-nightauditor Pass
+12-30-2021 15:45:57 | INFO | Test RV Pass
+12-30-2021 15:45:59 | INFO | Test FD Pass
+12-30-2021 15:46:01 | INFO | Test FD Pass
+12-30-2021 15:46:03 | INFO | Test FD Pass
+12-30-2021 15:46:05 | INFO | Test FD-WN Pass
+12-30-2021 15:46:07 | INFO | Test FD-CI Pass
+12-30-2021 15:46:09 | INFO | Test FD-CO Pass
+12-30-2021 15:46:11 | INFO | Test FD-RS Pass
+12-30-2021 15:46:14 | INFO | Test FD Pass
+12-30-2021 15:46:16 | INFO | Test CS Pass
+12-30-2021 15:46:18 | INFO | Test PF Pass
+12-30-2021 15:46:20 | INFO | Test PF Pass
+12-30-2021 15:46:22 | INFO | Test PF Pass
+12-30-2021 15:46:24 | INFO | Test PF-ID Pass
+12-30-2021 15:46:26 | INFO | Test PF-TA Pass
+12-30-2021 15:46:28 | INFO | Test PF-CP Pass
+12-30-2021 15:46:31 | INFO | Test PF-GR Pass
+12-30-2021 15:46:33 | INFO | Test PF Pass
+12-30-2021 15:46:35 | INFO | Test NA Pass
+12-30-2021 15:46:37 | INFO | Test NA-RP Pass
+12-30-2021 15:46:39 | INFO | Test NA-HD Pass
+12-30-2021 15:46:41 | INFO | Test NA-CD Pass
+12-30-2021 15:46:43 | INFO | Test NA-AS Pass
+12-30-2021 15:46:45 | INFO | Test NA Pass
+12-30-2021 15:46:47 | INFO | Test HK Pass
+12-30-2021 15:46:49 | INFO | Test HK Pass
+12-30-2021 15:46:51 | INFO | Test HK Pass
+12-30-2021 15:46:53 | INFO | Test HK-IM Pass
+12-30-2021 15:46:55 | INFO | Test HK-RS Pass
+12-30-2021 15:46:57 | INFO | Test HK Pass
+12-30-2021 15:46:59 | INFO | Test RS Pass
+12-30-2021 15:47:02 | INFO | Test RS Pass
+12-30-2021 15:47:04 | INFO | Test RS Pass
+12-30-2021 15:47:06 | INFO | Test RS-CS Pass
+12-30-2021 15:47:08 | INFO | Test RS Pass
+12-30-2021 15:47:10 | INFO | Test CF Pass
+12-30-2021 15:47:12 | INFO | Test ST Pass
+12-30-2021 15:47:14 | INFO | Test ST Pass
+12-30-2021 15:47:16 | INFO | Test ST Pass
+12-30-2021 15:47:18 | INFO | Test ST-HS Pass
+12-30-2021 15:47:20 | INFO | Test ST-RR Pass
+12-30-2021 15:47:22 | INFO | Test ST Pass
