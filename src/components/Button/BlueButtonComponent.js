@@ -18,6 +18,7 @@ import ThemeProvider from '@mui/material/styles/ThemeProvider';
 
 function BlueButtonComponent({
   text = ""
+ 
 }) {
   //Button color
   const theme = useTheme();
@@ -26,7 +27,7 @@ function BlueButtonComponent({
   
   // const classes = useStyles();
 
-  return <Button className="Blue-Button" >{text}</Button>
+  return <Button className="Blue-Button" fullWidth>{text}</Button>
 }
 
 export default BlueButtonComponent;

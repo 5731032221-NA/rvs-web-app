@@ -1,19 +1,19 @@
 .Transparent {
-  width: 90%;
+
 
   /* width: 344.4px; */
-  height: 42.4px;
-  margin: 13.5px 0 0;
-  padding: 9.2px 77.2px 9.2px 77.2px;
-  border: solid 1px #fff;
+  height: 42.4px !important;
+  margin: 13.5px 0 0 !important;
+  
+  border: solid 1px #fff !important;
 
-  font-family: Prompt;
-  font-size: 16px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #fff;
+  font-family: Prompt !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  font-stretch: normal !important;
+  font-style: normal !important;
+  line-height: normal !important;
+  letter-spacing: normal !important;
+  text-align: center !important;
+  color: #fff !important;
 }

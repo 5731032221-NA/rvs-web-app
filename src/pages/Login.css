@@ -8,9 +8,9 @@
   display: flex;
   text-align: center;
   background-image: url(../assets/images/imgbackground.jpg);
-  background-size: "cover";
-  background-position: "center";
-  background-repeat: "no-repeat";
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat !important;
   /* width: '100vw';
   height: '100vh'; */
   height: 100%; 
@@ -30,6 +30,21 @@
   border-style: solid;
 }
 
+@media only screen and (max-width: 600px) {
+  .background::before, .background::after {
+   
+    border-style: hidden;
+}
+.css-kfuryn {
+ 
+  display: none !important;
+}
+.text-style{
+  text-align: center !important;
+  
+}
+}
+
 .background::before {
   border-width: 9em;
   border-right-color: #ccc;
@@ -43,6 +58,21 @@
   align-items: center;
 }
 
+.Copyright {
+  width: 90%;
+    /* width: 297px; */
+    height: 19px;
+    margin: 11px 24.5px 41.6px 22.9px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 100;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+}
 
 
 
@@ -50,11 +80,9 @@
   /* display: flex; */
   /* width: 1366px;
   height: 768px; */
-  width: 100%;
-  /* top: 0;
-  right: 0; */
-  margin-top: -30%;
-  margin-left: 5%;
+  width: 70%;
+  margin-top: -10%;
+  margin-left: 30%;
   /* margin-right: 10%;
   padding-right: 10%; */
   /* background-size: "cover"; */
@@ -87,17 +115,18 @@
   /* width: 185px;
   height: 40px; */
   /* margin: 9.6px 80.5px 11px 78.9px; */
-  margin: 9.6px 0px 11px 78.9px; 
+  /* margin: 9.6px 0px 11px 78.9px;  */
   display: inline;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
   font-family: Montserrat;
   font-size: 33px;
-  font-weight: 600;
+  /* font-weight: 600; */
+  font-weight: 490;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  /* text-align: left; */
+  text-align: left;
   color: #fff;
 }
 
@@ -105,7 +134,7 @@
   /* width: 185px;
   height: 40px; */
   /* margin: 9.6px 80.5px 11px 78.9px; */
-  margin: 9.6px 80.5px 11px 0px;
+  /* margin: 9.6px 80.5px 11px 0px; */
   display: inline;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
   font-family: Montserrat;
@@ -126,7 +155,7 @@
   margin: 11px 24.5px 41.6px 22.9px;
   font-family: Montserrat;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 480;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
@@ -166,8 +195,8 @@
 }
 
 .Path-459 {
-  width: 343.8px;
-  height: 55.3px;
+  width: 100% !important;
+  border-radius: 5px !important;
   margin: 41.6px 0.5px 21.2px 0;
   padding: 7.7px 163.6px 10.7px 11.2px;
   background-color: #fff;
@@ -255,9 +284,9 @@
 }
 
 .Rectangle-1185 {
-  width: 404px;
+  width: 100%;
   height: 530px;
-  margin: 92px 239.5px 16px 5.6px;
+  /* margin: 92px 239.5px 16px 5.6px; */
   padding: 57px 29.5px 41.8px 30.1px;
   /* opacity: 0.09; */
   border-radius: 10px;
@@ -269,6 +298,7 @@
 .imglogo{
   padding-top: 5%;
   height: 60px; 
+  margin-bottom: 5%;
   background-size: "cover";
   background-position: "center";
   /* background-image: url(../assets/images/rvs.png); */

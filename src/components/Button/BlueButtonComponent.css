@@ -6,15 +6,15 @@
   height: 47.8px;
   margin: 24.4px 0 13.5px;
   padding: 12.9px 150.5px 10.9px 137.9px;
-  background-image: linear-gradient(97deg, #153595 1%, #1741ba 21%, #032ca7 100%, #0b1b4b 100%);
+  background-image: linear-gradient(97deg, #153595 1%, #1741ba 21%, #032ca7 100%, #0b1b4b 100%) !important;
   
-  font-family: Prompt;
-  font-size: 16px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #fff;
+  font-family: Prompt !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  font-stretch: normal !important;
+  font-style: normal !important;
+  line-height: normal !important;
+  letter-spacing: normal !important;
+  text-align: center !important;
+  color: #fff !important;
 }
