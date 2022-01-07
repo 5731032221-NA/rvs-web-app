@@ -31,14 +31,13 @@
 }
 
 .background::before {
-  
-  border-width: 10em;
+  border-width: 9em;
   border-right-color: #ccc;
   border-top-color: #ccc;
 }
 
 .background::after {
-  border-width: 10em;
+  border-width: 9em;
   border-right-color: #fff;
   border-top-color: #fff;
   align-items: center;
@@ -46,17 +45,20 @@
 
 
 
+
 .logo {
+  /* display: flex; */
   /* width: 1366px;
   height: 768px; */
-  width: 200%;
-  top: 0;
-  right: 0;
+  width: 100%;
+  /* top: 0;
+  right: 0; */
   margin-top: -30%;
-  margin-right: 10%;
-  padding-right: 10%;
-  background-size: "cover";
-  background-position: "center";
+  margin-left: 5%;
+  /* margin-right: 10%;
+  padding-right: 10%; */
+  /* background-size: "cover"; */
+  /* background-position: "center"; */
   /* background-image: url(../assets/images/imgbackground-logo.png); */
 }
 
@@ -74,10 +76,19 @@
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 }
 
+.Name {
+  /* display: block; */
+  width: 90%;
+  /* align-items: center;
+  justify-content: center; */
+  margin-top: 20px;
+}
 .REVOSOFT {
-  width: 185px;
-  height: 40px;
+  /* width: 185px;
+  height: 40px; */
   /* margin: 9.6px 80.5px 11px 78.9px; */
+  margin: 9.6px 0px 11px 78.9px; 
+  display: inline;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
   font-family: Montserrat;
   font-size: 33px;
@@ -86,14 +97,16 @@
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: left;
+  /* text-align: left; */
   color: #fff;
 }
 
 .REVOSOFT-text-style-1 {
-  width: 185px;
-  height: 40px;
+  /* width: 185px;
+  height: 40px; */
   /* margin: 9.6px 80.5px 11px 78.9px; */
+  margin: 9.6px 80.5px 11px 0px;
+  display: inline;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
   font-family: Montserrat;
   font-size: 33px;
@@ -102,7 +115,7 @@
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: left;
+  /* text-align: left; */
   color: #fff;
 }
 
@@ -119,8 +132,7 @@
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
-  /* color: #fff; */
-  color: #999;
+  color: #fff;
 }
 
 .RevosoftMetrosystemscoth {
@@ -242,14 +254,26 @@
 
 }
 
+.Rectangle-1185 {
+  width: 404px;
+  height: 530px;
+  margin: 92px 239.5px 16px 5.6px;
+  padding: 57px 29.5px 41.8px 30.1px;
+  /* opacity: 0.09; */
+  border-radius: 10px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  /* background-color: #000; */
+  background: rgba(0, 0, 0, 0.09);
+}
+
 .imglogo{
-  padding-top: 10%;
+  padding-top: 5%;
   height: 60px; 
   background-size: "cover";
   background-position: "center";
   /* background-image: url(../assets/images/rvs.png); */
   /* background-image: url(../assets/images/rvs.png); */
-  filter: brightness(0) invert(0);
+  filter: brightness(0) invert(1);
 }
 
 /* .eye-solid {

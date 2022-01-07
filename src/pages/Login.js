@@ -10,8 +10,9 @@ import {
   Button,
   Paper,
   Grid,
-  Divider,
+  Divider
 } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import BlueButtonComponent from '../components/Button/BlueButtonComponent'
 import TransparentButtonComponent from '../components/Button/TransparentButtonComponent'
 import TextFieldComponent from '../components/TextField/TextFieldComponent'
@@ -19,8 +20,24 @@ import TextFieldPasswordComponent from '../components/TextField/TextFieldPasswor
 // import { createTheme } from '@mui/material/styles';
 // import ThemeProvider from '@mui/material/styles/ThemeProvider';
 // import green from '@mui/material/colors/green';
-function App() {
+const useStyles = makeStyles(theme => ({
+  paper: {
+  //   overflow: "auto",
+  //   boxSizing: "content-box",
+  // textAlign: "center",
+  // marginTop: 100,
+  // width: "100vw",
+  backgroundColor: 'rgba(0, 0, 0, 0.16)',
+  boxShadow: "0 3px 6px 0 rgba(0, 0, 0, 0.16)"
 
+    // opacity: 0.8,
+    // backgroundColor: 'transparent',
+
+  },
+}));
+
+function App() {
+const classes = useStyles();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errorUsername, setErrorUsername] = useState(false);
@@ -43,10 +60,10 @@ function App() {
             p={2}
             position="absolute"
             top="6%"
-            left="89%"
+            right="0"
             zIndex="tooltip"
             style={{ backgroundRepeat: "no-repeat" }}
-            sx={{ display: { xs: "none", md: "none", lg: "flex" } }}
+            sx={{ display: "flex"}}
           >
             {file ? (
               <img
@@ -58,7 +75,6 @@ function App() {
               <img
                 src={require("../assets/images/imgbackground-logo.png")}
                 className="logo"
-                alt="logo"
               />
             )}
           </Box>
@@ -70,9 +86,9 @@ function App() {
             justifycontent="center"
           >
             
-            <Paper className="paper"  >
-              <img className="imglogo"  src={require("../assets/images/rvs.png")}/>
-              <div><a className="REVOSOFT" />REVO<a/><a className="REVOSOFT-text-style-1" />SOFT<a/></div>
+            <Grid className="Rectangle-1185"  >
+            <img className="imglogo"  src={require("../assets/images/rvs.png")}/>
+              <div><h5 className="REVOSOFT" >REVO</h5><a className="REVOSOFT-text-style-1" >SOFT</a></div>
               <div><h5 className="Hotel-Property-Management-System">
                 Hotel Property Management System
               </h5></div>
@@ -110,7 +126,8 @@ function App() {
                   </Grid>
                 </form>
               </Grid>
-            </Paper>
+            </Grid>
+            
           </Container>
                 
     </div>
