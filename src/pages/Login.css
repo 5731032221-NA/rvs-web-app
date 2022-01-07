@@ -5,22 +5,31 @@
 .background {
   /* width: 1366px;
   height: 768px; */
+  background-image: url(../assets/images/imgbackground3.jpg);
+  background-size: cover;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
   display: flex;
   text-align: center;
-  background-image: url(../assets/images/imgbackground.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat !important;
   /* width: '100vw';
   height: '100vh'; */
   height: 100%; 
   width: 100%;
   margin: 0;
-  opacity: 0.87;
+  /* opacity: 0.87; */
   justify-content: center;
   align-items: center;
 }
-.background::before,
+.background::before {    
+  content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(255,255,255,0.13);
+}
+/* .background::before, */
 .background::after {
   content: '';
   position: absolute;
