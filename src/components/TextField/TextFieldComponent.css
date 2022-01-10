@@ -4,5 +4,7 @@
   margin: 41.6px 0.5px 21.2px 0;
   padding: 7.7px 163.6px 10.7px 11.2px;
   background-color: #fff;
+  border-color: black !important;
+  color: #000 !important;
 }
 

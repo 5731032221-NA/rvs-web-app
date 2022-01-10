@@ -27,7 +27,7 @@
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background-color: rgba(255,255,255,0.13);
+    /* background-color: rgba(255,255,255,0.13); */
 }
 /* .background::before, */
 .background::after {
@@ -55,13 +55,15 @@
 }
 
 .background::before {
-  border-width: 9em;
+  border-width: 8em;
+  /* 13vw; */
   border-right-color: #ccc;
   border-top-color: #ccc;
 }
 
 .background::after {
-  border-width: 9em;
+  border-width: 8em;
+  /* 13vw; */
   border-right-color: #fff;
   border-top-color: #fff;
   align-items: center;
@@ -72,7 +74,7 @@
     /* width: 297px; */
     height: 19px;
     margin: 11px 24.5px 41.6px 22.9px;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 16px;
     font-weight: 100;
     font-stretch: normal;
@@ -127,10 +129,10 @@
   /* margin: 9.6px 0px 11px 78.9px;  */
   display: inline;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif !important;
   font-size: 33px;
-  /* font-weight: 600; */
-  font-weight: 490;
+  font-weight: 600;
+  /* font-weight: 490; */
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
@@ -146,7 +148,7 @@
   /* margin: 9.6px 80.5px 11px 0px; */
   display: inline;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 33px;
   font-weight: normal;
   font-stretch: normal;
@@ -162,7 +164,7 @@
   /* width: 297px; */
   height: 19px;
   margin: 11px 24.5px 41.6px 22.9px;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 480;
   font-stretch: normal;

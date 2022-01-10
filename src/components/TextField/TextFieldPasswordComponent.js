@@ -49,6 +49,7 @@ export default function TextFieldComponent({
   type={values.showPassword ? 'text' : 'password'}
   value={values.password}
   onChange={handleChange('password')}
+  variant="filled"
   InputProps={{
     endAdornment:
       (<><InputAdornment position="end">
