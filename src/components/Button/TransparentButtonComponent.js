@@ -7,7 +7,7 @@ import './TransparentButtonComponent.css';
 function TransparentButtonComponent({
     text = ""
   }){ 
-    return <Button className="Transparent"  fullWidth>{text}</Button>;
+    return <Button className="Transparent" uppercase={false}  fullWidth>{text}</Button>;
 }
 
 export default TransparentButtonComponent;
