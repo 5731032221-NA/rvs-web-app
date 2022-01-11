@@ -179,7 +179,7 @@
   width: 169px;
   height: 18px;
   margin: 1px 0 0;
-  font-family: Prompt;
+  font-family: Prompt, sans-serif;
   font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
@@ -194,7 +194,7 @@
   width: 58px;
   height: 18px;
   margin: 0 110.9px 1px 0.1px;
-  font-family: Prompt;
+  font-family: Prompt, sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -226,7 +226,7 @@
   margin: 24.4px 0 13.5px;
   padding: 12.9px 150.5px 10.9px 137.9px;
   background-image: linear-gradient(97deg, #153595 1%, #1741ba 21%, #032ca7 100%, #0b1b4b 100%);
-  font-family: Prompt;
+  font-family: Prompt, sans-serif;
   font-size: 16px;
   font-weight: 500;
   font-stretch: normal;
@@ -240,7 +240,7 @@
 /* .Sign-In {
   width: 56px;
   height: 24px;
-  font-family: Prompt;
+  font-family: Prompt, sans-serif;
   font-size: 16px;
   font-weight: 500;
   font-stretch: normal;
@@ -259,7 +259,7 @@
   border: solid 1px #fff;
   opacity: 0.1;
 
-  font-family: Prompt;
+  font-family: Prompt, sans-serif;
   font-size: 16px;
   font-weight: 500;
   font-stretch: normal;
@@ -273,7 +273,7 @@
 /* .Sign-In-by-Administrator {
   width: 190px;
   height: 24px;
-  font-family: Prompt;
+  font-family: Prompt, sans-serif;
   font-size: 16px;
   font-weight: 500;
   font-stretch: normal;
