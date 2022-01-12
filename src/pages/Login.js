@@ -54,6 +54,26 @@ function App() {
     console.log("signin")
     setErrorLogin(!errorLogin)
   };
+
+  // function getWindowDimensions() {
+  //   const { innerWidth: width, innerHeight: height } = window;
+  //   return {
+  //     width,
+  //     height
+  //   };
+  // }
+
+  // const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  // useEffect(() => {
+  //   function handleResize() {
+  //     setWindowDimensions(getWindowDimensions());
+  //   }
+
+  //   window.addEventListener('resize', handleResize);
+  //   return () => window.removeEventListener('resize', handleResize);
+  // }, []);
+
   return (
     <div className="background"
       style={{
@@ -61,7 +81,7 @@ function App() {
         height: '100vh',
       }}
     >
-      <div className="box"></div>
+      {/* <div className="box"></div> */}
       {/* <Box
         p={2}
         position="absolute"
@@ -93,7 +113,10 @@ function App() {
         justifycontent="center"
       >
 
-        <Grid className="Rectangle-1185"  >
+        <Grid 
+        marginTop='18vh'
+        // paddingTop='7vh'
+        className="Rectangle-1185"  >
           <Grid className="Rectangle-1186">
             <img
               src={require("../assets/images/novotel.png")}
