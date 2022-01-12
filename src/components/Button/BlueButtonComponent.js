@@ -16,9 +16,13 @@ import ThemeProvider from '@mui/material/styles/ThemeProvider';
 //   },
 // }))
 
+const handleOnClick = () => {
+  console.log("func1");
+};
+
 function BlueButtonComponent({
-  text = ""
- 
+  text = "",
+  onClick = handleOnClick
 }) {
   //Button color
   const theme = useTheme();
@@ -27,7 +31,7 @@ function BlueButtonComponent({
   
   // const classes = useStyles();
 
-  return <Button className="Blue-Button" fullWidth>{text}</Button>
+  return <Button className="Blue-Button" fullWidth onClick={() => onClick()}>{text}</Button>
 }
 
 export default BlueButtonComponent;

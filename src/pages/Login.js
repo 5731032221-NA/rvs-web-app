@@ -49,6 +49,10 @@ function App() {
   const [updateData, setUpdateData] = useState({});
 
   const handleSubmit = async (e) => { }
+  const signIn = async () => {
+    console.log("signin")
+    setErrorLogin(!errorLogin)
+  };
   return (
     <div className="background"
       style={{
@@ -57,7 +61,7 @@ function App() {
       }}
     >
       <div className="box"></div>
-      <Box
+      {/* <Box
         p={2}
         position="absolute"
         top="6%"
@@ -79,7 +83,7 @@ function App() {
           />
 
         )}
-      </Box>
+      </Box> */}
 
       <Container
         component="main"
@@ -89,13 +93,25 @@ function App() {
       >
 
         <Grid className="Rectangle-1185"  >
-          <img className="imglogo" src={require("../assets/images/rvs.png")} />
-          <div className="text-style"><h5 className="REVOSOFT" >REVO</h5><a className="REVOSOFT-text-style-1" >SOFT</a></div>
-          <div><h5 className="Hotel-Property-Management-System">
-            Hotel Property Management System
-          </h5></div>
-          <Divider variant="middle" />
+          <Grid className="Rectangle-1186">
+            <img
+              src={require("../assets/images/novotel.png")}
+              className="logo"
+            />
+          </Grid>
+          <img className="imglogo" src={require("../assets/images/logo_Revosoft.png")} />
+          {/* <Grid className="TextGroup">
+            <img className="imglogo" src={require("../assets/images/logo_Revosoft.png")} />
+            <Grid className="TextName">
+            <div className="text-style"><h5 className="REVOSOFT" >REVO</h5><a className="REVOSOFT-text-style-1" >SOFT</a></div>
+            <div><h5 className="Hotel-Property-Management-System">
+              Hotel Property Management System
+            </h5></div>
+            </Grid>
+          </Grid> */}
 
+          {/* <Divider variant="middle" /> */}
+{errorLogin? <div className="Rectangle-454"><div className="Path-461"/><h5 className="Invalid-Username-or-password" >Invalid Username or Password</h5></div> : null}
           <Grid item className="formlogin">
             {/* Validate */}
             <form autoComplete="on" onSubmit={handleSubmit}>
@@ -117,9 +133,10 @@ function App() {
                 // onChange={(e) => setPassword(e.target.value)}
                 ></TextFieldPasswordComponent>
               </Grid>
-              <Grid item style={{ paddingTop: 25, paddingBottom: 20 }}>
+              <Grid item style={{ paddingTop: 25, paddingBottom: 20 }} >
                 <BlueButtonComponent
                   text="SIGN IN"
+                  onClick={signIn}
                 />
                 <TransparentButtonComponent
                   text="Sign In by Administrator"
