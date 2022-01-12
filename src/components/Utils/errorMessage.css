@@ -1,0 +1,32 @@
+.Rectangle-454 {
+  display: inline-flex;
+  justify-items: left;
+  text-align: left;
+  /* display: inline-flex; */
+  width: 85%;
+  height: 35px;
+  
+  /* margin: 20px 0.4px 11px 0; */
+  /* padding: 0 104px 0 0; */
+  opacity: 0.55;
+  border-radius: 4px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #ebebeb;
+  background-color: #fff;
+}
+
+.Invalid-Username-or-password{
+  width: 95%;
+  /* height: 2px; */
+  margin: auto;
+  /* margin: 1px 0 0 8px; */
+  font-family: Prompt, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(28, 28, 40, 0.87) !important;
+}

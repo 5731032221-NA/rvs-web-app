@@ -18,6 +18,7 @@ import TransparentButtonComponent from '../components/Button/TransparentButtonCo
 import TextFieldComponent from '../components/TextField/TextFieldComponent'
 import TextFieldPasswordComponent from '../components/TextField/TextFieldPasswordComponent'
 import Copyright from '../components/Utils/copyright'
+import ErrorMessageComponent from "../components/Utils/errorMessage";
 // import { createTheme } from '@mui/material/styles';
 // import ThemeProvider from '@mui/material/styles/ThemeProvider';
 // import green from '@mui/material/colors/green';
@@ -111,7 +112,7 @@ function App() {
           </Grid> */}
 
           {/* <Divider variant="middle" /> */}
-{errorLogin? <div className="Rectangle-454"><div className="Path-461"/><h5 className="Invalid-Username-or-password" >Invalid Username or Password</h5></div> : null}
+          {errorLogin ? <ErrorMessageComponent text="Invalid Username or Password" /> : null}
           <Grid item className="formlogin">
             {/* Validate */}
             <form autoComplete="on" onSubmit={handleSubmit}>

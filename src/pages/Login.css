@@ -335,38 +335,7 @@
   background-color: #f50000;
 }
 
-.Rectangle-454 {
-  display: inline-flex;
-  justify-items: left;
-  text-align: left;
-  /* display: inline-flex; */
-  width: 80%;
-  height: 35px;
-  
-  /* margin: 20px 0.4px 11px 0; */
-  /* padding: 0 104px 0 0; */
-  opacity: 0.55;
-  border-radius: 4px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-  border: solid 1px #ebebeb;
-  background-color: #fff;
-}
 
-.Invalid-Username-or-password{
-  width: 189px;
-  height: 21px;
-  margin: auto;
-  /* margin: 1px 0 0 8px; */
-  font-family: Prompt, sans-serif;
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.67;
-  letter-spacing: normal;
-  text-align: left;
-  color: rgba(28, 28, 40, 0.87) !important;
-}
 /* .eye-solid {
   width: 23px;
   height: 15.3px;
