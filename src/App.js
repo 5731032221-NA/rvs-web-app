@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Leftbar from './layouts/Leftbar';
 
 import Dashboard from './pages/Dashboard';
+import Reservation from './pages/Reservation';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       
        
           <Route exact path={`/dashboard`} element={   <Leftbar><Dashboard /></Leftbar>} />
+          <Route exact path={`/reservation`} element={   <Leftbar><Reservation /></Leftbar>} />
           
     
 

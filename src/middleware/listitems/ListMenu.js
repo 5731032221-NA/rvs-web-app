@@ -17,12 +17,42 @@ import EngineeringIcon from '@mui/icons-material/Engineering';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import { makeStyles } from '@mui/styles';
+import { useNavigate } from 'react-router-dom';
+
+
+const useStyles = makeStyles({
+  root: {
+    "&.Mui-selected": {
+      backgroundColor: "red",
+      color: "white",
+      "& .MuiListItemIcon-root": {
+        color: "white"
+      }
+    },
+    "&$.Mui-selected:hover": {
+      backgroundColor: "purple",
+      color: "white",
+      "& .MuiListItemIcon-root": {
+        color: "white"
+      }
+    },
+    "&:hover": {
+      backgroundColor: "blue",
+      color: "white",
+      "& .MuiListItemIcon-root": {
+        color: "white"
+      }
+    }
+  },
+  selected: {}
+});
 
 function ListMenu() {
+    const classes = useStyles();
+    const navigate = useNavigate();
     const [translate, setTranslate] = React.useState(translate_en);
     const [selectedIndex, setSelectedIndex] = React.useState(0);
-
-
     const [openFrontDesk, setOpenFrontDesk] = React.useState(false);
     const [openCashier, setOpenCashier] = React.useState(false);
     const [openProfile, setOpenProfile] = React.useState(false);
@@ -32,6 +62,8 @@ function ListMenu() {
     const [openReport, setOpenReport] = React.useState(false);
     const [openConfiguration, setOpenConfiguration] = React.useState(false);
     const [openSystemsTools, setOpenSystemsTools] = React.useState(false);
+    const [openDashboard, setOpenDashboard] = React.useState(false);
+    const [openReservation, setOpenReservation] = React.useState(false);
     
     
 
@@ -98,15 +130,41 @@ function ListMenu() {
       };
       
       
-      
+      const handleClickDashboard  = () => {
+        setSelectedIndex(0);
+        setOpenDashboard(!openDashboard);
+        navigate("/dashboard");
+      };
+
+      const handleClickReservation = () => {
+        setSelectedIndex(1);
+        setOpenReservation(!openReservation);
+        navigate("/reservation");
+      };
       
 
       
   
   return (
-    <List sx={{fontSize: "14px"}}>
+    <List sx={{fontSize: "14px"}}   sx={{
+      // selected and (selected + hover) states
+      '&& .Mui-selected, && .Mui-selected:hover': {
+        bgcolor: '#0f349a',
+        borderLeft: '2px solid white',
+        '&, & .MuiListItemIcon-root': {
+          color: 'white',
+        },
+      },
+      // hover states
+      '& .MuiListItemButton-root:hover': {
+        bgcolor: '#0f349a',
+        '&, & .MuiListItemIcon-root': {
+          color: 'white',
+        },
+      },
+    }}>
    
-      <ListItem button >
+      <ListItem button onClick={handleClickDashboard}  selected={selectedIndex === 0}>
         <ListItemIcon>
          <DashboardIcon style={{color: "white"}} />
         </ListItemIcon>
@@ -114,7 +172,7 @@ function ListMenu() {
          primaryTypographyProps={{ style: setFontSize }} primary={translate.Dashboard} />
       </ListItem>
 
-      <ListItem button >
+      <ListItem button onClick={handleClickReservation}  selected={selectedIndex === 1}>
         <ListItemIcon>
          <KingBedIcon style={{color: "white"}} />
         </ListItemIcon>
