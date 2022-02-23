@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Leftbar from './layouts/Leftbar';
 
 import Dashboard from './pages/Dashboard';
+import Reservation from './pages/Reservation';
 
 function App() {
   return (
@@ -16,7 +17,13 @@ function App() {
           <Route exact path={`/`}  element={<Login />} />
           <Route exact path={`/login`}  element={<Login />} />
       
-          <Route exact path={`/leftbar`} element={<Leftbar />} />
+       
+          <Route exact path={`/dashboard`} element={   <Leftbar><Dashboard /></Leftbar>} />
+          <Route exact path={`/reservation`} element={   <Leftbar><Reservation /></Leftbar>} />
+          
+    
+
+          {/* <Route exact path={`/leftbar`} element={<Leftbar />} /> */}
 
       
           </Routes>
