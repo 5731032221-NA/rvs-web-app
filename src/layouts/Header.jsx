@@ -1,146 +1,232 @@
-import * as React from "react";
-import logo_white from "../assets/images/logo_white.png";
-import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import { FormControl, Grid, MenuItem, Select } from "@mui/material";
-import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
-import SortIcon from "@mui/icons-material/Sort";
-import { makeStyles } from '@mui/styles';
-import GlobalStyles from '@mui/material/GlobalStyles';
+import React, { useContext } from "react";
+import {
+  AppBar,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Grid,
+  IconButton,
+  Paper,
+  Tab,
+  Tabs,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
+import PropTypes from "prop-types";
+import { makeStyles, alpha } from "@material-ui/core/styles";
+import ImageAspectRatioIcon from "@material-ui/icons/ImageAspectRatio";
+import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import KingBedOutlinedIcon from "@mui/icons-material/KingBedOutlined";
+import NightsStayOutlinedIcon from "@mui/icons-material/NightsStayOutlined";
+import NotesIcon from "@mui/icons-material/Notes";
+import { Avatar, Badge, createTheme, Stack } from "@mui/material";
+import dayjs from "dayjs";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { styled } from "@mui/material/styles";
 
-import ListMenu from './../middleware/listitems/ListMenu';
+const useStyles = makeStyles((theme) => ({
+  toolbar: {
+    display: "flex",
+  },
+  BoxTab: {
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    borderRadius: theme.shape.borderRadius,
+    height: "50px",
+  },
+  icons: {
+    display: "flex",
+    alignItems: "center",
+  },
+  badge: {
+    marginRight: theme.spacing(2),
+  },
+  badge1: {
+    marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(2),
+  },
+}));
 
-const drawerWidth = 240;
-
-
-
-const useStyles = makeStyles({
-    root: {
-      background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-      border: 0,
-      borderRadius: 3,
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      color: 'white',
-      height: 48,
-      padding: '0 30px',
-    },
-  });
-
-const openedMixin = (theme) => ({
-  width: drawerWidth,
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  }),
-  overflowX: "hidden",
-});
-
-const closedMixin = (theme) => ({
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(9)} + 1px)`,
+const StyledTabs = styled((props) => (
+  <Tabs
+    {...props}
+    TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
+  />
+))({
+  "& .MuiTabs-indicator": {
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+  },
+  "& .MuiTabs-indicatorSpan": {
+    maxWidth: 100,
+    width: "100%",
+    backgroundColor: "#00aeff",
   },
 });
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
 }));
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
-  whiteSpace: "nowrap",
-  boxSizing: "border-box",
-  ...(open && {
-    ...openedMixin(theme),
-    "& .MuiDrawer-paper": openedMixin(theme),
-  }),
-  ...(!open && {
-    ...closedMixin(theme),
-    "& .MuiDrawer-paper": closedMixin(theme),
-  }),
-}));
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
 
-export default function Leftbar() {
-  const theme = useTheme();
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
+}
 
-  const handleDrawerClose = () => {
-    setOpen(false);
+export default function Header() {
+  const classes = useStyles();
+
+  const [wordColor, setWordColor] = React.useState("#00aeff");
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
+    <div>
+      <Toolbar>
+        <div className={classes.BoxTab}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <StyledTabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+              TabIndicatorProps={{
+                style: { backgroundColor: wordColor },
+              }}
+            >
+              <Tab
+                icon={<ImageAspectRatioIcon />}
+                style={{ textTransform: "none", fontSize: "12px" }}
+                label="Front Desk"
+                {...a11yProps(0)}
+              />
+              <span
+                style={{
+                  color: "white",
+                  borderLeft: " 1px solid rgb(255 255 255 / 44%)",
+                  marginTop: 20,
+                  marginBottom: 20,
+                }}
+              ></span>
+              <Tab
+                icon={<KingBedOutlinedIcon />}
+                style={{ textTransform: "none", fontSize: "12px" }}
+                label="Reservation"
+                {...a11yProps(1)}
+              />
+              <span
+                style={{
+                  color: "white",
+                  borderLeft: " 1px solid rgb(255 255 255 / 44%)",
+                  marginTop: 20,
+                  marginBottom: 20,
+                }}
+              ></span>
+              <Tab
+                icon={<MonetizationOnIcon />}
+                style={{ textTransform: "none", fontSize: "12px" }}
+                label="Cashier"
+                {...a11yProps(2)}
+              />
+              <span
+                style={{
+                  color: "white",
+                  borderLeft: " 1px solid rgb(255 255 255 / 44%)",
+                  marginTop: 20,
+                  marginBottom: 20,
+                }}
+              ></span>
+              <Tab
+                icon={<NightsStayOutlinedIcon />}
+                style={{ textTransform: "none", fontSize: "12px" }}
+                label="Night Auditor"
+                {...a11yProps(3)}
+              />
+            </StyledTabs>
+          </Box>
+        </div>
 
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <SortIcon
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: "36px",
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon />
-          </SortIcon>
-          <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+        <div className={classes.icons} style={{ paddingLeft: 400 }}>
+          <Typography className={classes.badge}>
+            {dayjs().format("DD MMM YYYY")}{" "}
           </Typography>
-        </Toolbar>
-      </AppBar>
-     
+
+          <span>|</span>
+
+          <Typography className={classes.badge1}> 11:30AM</Typography>
+
+          <IconButton
+            className={classes.badge}
+            size="large"
+            aria-label="show 17 new notifications"
+            color="inherit"
+          >
+            <Badge badgeContent={2} color="error">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+
+          <div>
+            {" "}
+            <span
+              style={{
+                color: "white",
+                borderLeft: " 1px solid rgb(255 255 255 / 44%)",
+                marginTop: 20,
+                marginBottom: 20,
+              }}
+            ></span>
+          </div>
+          <Avatar
+            src="/static/images/avatar/3.jpg"
+            variant="square"
+            className={classes.badge1}
+          />
+
+          <Typography className={classes.badge}>Pratchaya N.</Typography>
+          <ArrowDropDownIcon />
+        </div>
+      </Toolbar>
+    </div>
   );
 }

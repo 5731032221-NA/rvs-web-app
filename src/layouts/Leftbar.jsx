@@ -1,5 +1,5 @@
 import * as React from "react";
-import logo_white from "../assets/images/logo_white.png";
+import logo_white from "../assets/images/logo_Revosoft.png";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -21,26 +21,26 @@ import MailIcon from "@mui/icons-material/Mail";
 import { FormControl, Grid, MenuItem, Select } from "@mui/material";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SortIcon from "@mui/icons-material/Sort";
-import { makeStyles } from '@mui/styles';
-import GlobalStyles from '@mui/material/GlobalStyles';
+import { makeStyles } from "@mui/styles";
+import GlobalStyles from "@mui/material/GlobalStyles";
+import clsx from "clsx";
 
-import ListMenu from './../middleware/listitems/ListMenu';
+import ListMenu from "./../middleware/listitems/ListMenu";
+import Header from "./Header";
 
 const drawerWidth = 240;
 
-
-
-const useStyles = makeStyles({
-    root: {
-      background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-      border: 0,
-      borderRadius: 3,
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      color: 'white',
-      height: 48,
-      padding: '0 30px',
-    },
-  });
+const useStyles = makeStyles((theme) => ({
+  header: {
+    background: "linear-gradient(45deg, #0f349a 30%, #0099ff 90%)",
+    border: 0,
+    boxShadow: "0 3px 5px 2px #ffffff4a",
+    color: "white",
+  },
+  menuButtonHidden: {
+    display: "none",
+  },
+}));
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -68,7 +68,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
+
   ...theme.mixins.toolbar,
 }));
 
@@ -122,41 +122,66 @@ export default function Leftbar() {
 
   return (
     <Box sx={{ display: "flex" }}>
-         <GlobalStyles
+      <GlobalStyles
         styles={{
-          h1: { color: 'white' },
-          '*::-webkit-scrollbar': {
-            width: '0.1em',
+          h1: { color: "white" },
+          "*::-webkit-scrollbar": {
+            width: "0.1em",
           },
-          '*::-webkit-scrollbar-track': {
-            '-webkit-box-shadow': 'inset 0 0 6px white',
+          "*::-webkit-scrollbar-track": {
+            "-webkit-box-shadow": "inset 0 0 6px white",
           },
-          '*::-webkit-scrollbar-thumb': {
-            backgroundColor: 'white)',
-            outline: '1px solid white',
+          "*::-webkit-scrollbar-thumb": {
+            backgroundColor: "white)",
+            outline: "1px solid white",
           },
         }}
       />
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar className={classes.header} position="fixed" open={open}>
         <Toolbar>
+          <img
+            src={logo_white}
+            className={clsx(
+              classes.logoExpand,
+              open && classes.menuButtonHidden
+            )}
+            alt="..."
+            height={40}
+          />
+
           <SortIcon
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
+              marginLeft: "20px",
               marginRight: "36px",
               ...(open && { display: "none" }),
             }}
           >
             <MenuIcon />
           </SortIcon>
-          <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
-          </Typography>
+
+          <div className={classes.sectionDesktop}>
+            <span
+              className={clsx(
+                classes.logoExpand,
+                open && classes.menuButtonHidden
+              )}
+              style={{
+                color: "white",
+                borderLeft: " 1px solid rgb(255 255 255 / 44%)",
+                marginTop: 20,
+                marginBottom: 20,
+              }}
+            ></span>
+          </div>
+          <Header />
         </Toolbar>
       </AppBar>
+
       <Drawer
         variant="permanent"
         open={open}
@@ -172,7 +197,7 @@ export default function Leftbar() {
             src={logo_white}
             className="rounded mx-auto d-block"
             alt="..."
-            height={35}
+            height={40}
           />
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -183,11 +208,6 @@ export default function Leftbar() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-
-
-
-     
-
 
         <Grid
           item
@@ -200,8 +220,6 @@ export default function Leftbar() {
               variant="subtitle1"
               style={{ fontSize: 12, paddingLeft: 50, marginTop: -10 }}
             >
-              {/*sessionStorage.getItem("name")*/}
-
               {" Change Property"}
             </Typography>
           </Grid>
@@ -219,15 +237,12 @@ export default function Leftbar() {
             <FormControl
               variant="filled"
               style={{ backgroundColor: "white", borderRadius: 5 }}
-            //   className={classes.root}
             >
               <Select
                 name="selectprop"
                 id="selectprop"
-                  value="Metro Pattaya"
-                //   onChange={handleChangeProperty}
-                //   defaultValue={sessionStorage.getItem("property")}
-                style={{ width: 160, height: 40,backgroundColor: "white" }}
+                value="Metro Pattaya"
+                style={{ width: 160, height: 40, backgroundColor: "white" }}
               >
                 <MenuItem value="Metro Pattaya" label="Metro Pattaya">
                   <div style={{ marginTop: -7 }}>Metro Pattaya</div>
@@ -236,10 +251,8 @@ export default function Leftbar() {
             </FormControl>
           </Grid>
         </Grid>
-      
 
-      <ListMenu />
-
+        <ListMenu />
       </Drawer>
       {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
