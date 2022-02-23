@@ -16,7 +16,12 @@ function App() {
           <Route exact path={`/`}  element={<Login />} />
           <Route exact path={`/login`}  element={<Login />} />
       
-          <Route exact path={`/leftbar`} element={<Leftbar />} />
+       
+          <Route exact path={`/dashboard`} element={   <Leftbar><Dashboard /></Leftbar>} />
+          
+    
+
+          {/* <Route exact path={`/leftbar`} element={<Leftbar />} /> */}
 
       
           </Routes>

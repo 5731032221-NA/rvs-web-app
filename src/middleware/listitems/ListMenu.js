@@ -254,36 +254,6 @@ function ListMenu() {
       </Collapse>
 
 
-      <ListItemButton onClick={handleClickNightAuditor}  selected={selectedIndex === 5}>
-        <ListItemIcon>
-         <NightsStayIcon style={{color: "white"}} />
-        </ListItemIcon>
-        <ListItemText  primaryTypographyProps={{ style: setFontSize }} primary={translate.NightAuditor}  />
-        {openNightAuditor ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={openNightAuditor} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 9 }}>
-          
-            <ListItemText  primaryTypographyProps={{ style: setFontSize }} primary="Reports" />
-          </ListItemButton>
-
-          <ListItemButton sx={{ pl: 9 }}>
-           
-            <ListItemText  primaryTypographyProps={{ style: setFontSize }} primary="Hotel Date Maintenance" />
-          </ListItemButton>
-
-          <ListItemButton sx={{ pl: 9 }}>
-           
-            <ListItemText  primaryTypographyProps={{ style: setFontSize }} primary="Close-Day Procedure" />
-          </ListItemButton>
-
-          <ListItemButton sx={{ pl: 9 }}>
-           
-            <ListItemText  primaryTypographyProps={{ style: setFontSize }} primary="Auto-Sequence Reports" />
-          </ListItemButton>
-        </List>
-      </Collapse>
  
 
       <ListItemButton onClick={handleClickHouseKeeping}  selected={selectedIndex === 6}>
