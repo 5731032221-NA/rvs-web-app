@@ -25,6 +25,7 @@ import { makeStyles } from '@mui/styles';
 import GlobalStyles from '@mui/material/GlobalStyles';
 
 import ListMenu from './../middleware/listitems/ListMenu';
+import BottomBar from "./BottomBar";
 
 const drawerWidth = 240;
 
@@ -246,7 +247,9 @@ export default function Leftbar({children}) {
 
         {children}
       
+       
       </Box>
+      <BottomBar />
     </Box>
   );
 }
