@@ -142,6 +142,7 @@ export default function Leftbar({ children }) {
       <AppBar className={classes.header} position="fixed" open={open}>
         <Toolbar>
           <img
+            className={classes.logoRevosoft}
             src={logo_white}
             className={clsx(
               classes.logoExpand,
@@ -151,10 +152,10 @@ export default function Leftbar({ children }) {
             height={40}
           />
 
-          <SortIcon
-            color="inherit"
+          <IconButton
             aria-label="open drawer"
             onClick={handleDrawerOpen}
+            color="inherit"
             edge="start"
             sx={{
               marginLeft: "20px",
@@ -162,9 +163,8 @@ export default function Leftbar({ children }) {
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon />
-          </SortIcon>
-
+            <SortIcon />
+          </IconButton>
           <div className={classes.sectionDesktop}>
             <span
               className={clsx(

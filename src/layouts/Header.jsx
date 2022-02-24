@@ -26,26 +26,28 @@ import { Avatar, Badge, createTheme, Stack } from "@mui/material";
 import dayjs from "dayjs";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { styled } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     display: "flex",
   },
-  BoxTab: {
+  boxTab: {
     display: "flex",
     alignItems: "center",
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     borderRadius: theme.shape.borderRadius,
     height: "50px",
   },
-  icons: {
+  topbarRight: {
     display: "flex",
     alignItems: "center",
+    paddingLeft: "400px",
   },
-  badge: {
+  topBar: {
     marginRight: theme.spacing(2),
   },
-  badge1: {
+  topBarfar: {
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(2),
   },
@@ -69,62 +71,29 @@ const StyledTabs = styled((props) => (
   },
 });
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 export default function Header() {
   const classes = useStyles();
 
   const [wordColor, setWordColor] = React.useState("#00aeff");
-
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  const navigate = useNavigate();
+  const [selectedHeader, setSelectedHeader] = React.useState(0);
+  const [openFarontdesk, setOpenFarontdesk] = React.useState(false);
+
+  const handleClickFarontdesk = () => {
+    setSelectedHeader(0);
+    setOpenFarontdesk(!openFarontdesk);
+    navigate("/farontdes");
+  };
+
   return (
     <div>
-      <Toolbar>
-        <div className={classes.BoxTab}>
+      <Toolbar className={classes.toolbar}>
+        <div className={classes.boxTab}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <StyledTabs
               value={value}
@@ -138,7 +107,8 @@ export default function Header() {
                 icon={<ImageAspectRatioIcon />}
                 style={{ textTransform: "none", fontSize: "12px" }}
                 label="Front Desk"
-                {...a11yProps(0)}
+                onClick={handleClickFarontdesk}
+                selected={selectedHeader === 0}
               />
               <span
                 style={{
@@ -152,7 +122,8 @@ export default function Header() {
                 icon={<KingBedOutlinedIcon />}
                 style={{ textTransform: "none", fontSize: "12px" }}
                 label="Reservation"
-                {...a11yProps(1)}
+                onClick={handleClickFarontdesk}
+                selected={selectedHeader === 0}
               />
               <span
                 style={{
@@ -166,7 +137,8 @@ export default function Header() {
                 icon={<MonetizationOnIcon />}
                 style={{ textTransform: "none", fontSize: "12px" }}
                 label="Cashier"
-                {...a11yProps(2)}
+                onClick={handleClickFarontdesk}
+                selected={selectedHeader === 0}
               />
               <span
                 style={{
@@ -180,23 +152,26 @@ export default function Header() {
                 icon={<NightsStayOutlinedIcon />}
                 style={{ textTransform: "none", fontSize: "12px" }}
                 label="Night Auditor"
-                {...a11yProps(3)}
+                onClick={handleClickFarontdesk}
+                selected={selectedHeader === 0}
               />
             </StyledTabs>
           </Box>
         </div>
 
-        <div className={classes.icons} style={{ paddingLeft: 400 }}>
-          <Typography className={classes.badge}>
+        <div className={classes.topbarRight}>
+          <Typography className={classes.topBar}>
             {dayjs().format("DD MMM YYYY")}{" "}
           </Typography>
 
           <span>|</span>
 
-          <Typography className={classes.badge1}> 11:30AM</Typography>
+          <Typography className={classes.topBarfar}>
+            {dayjs().format("HH:mm A")}{" "}
+          </Typography>
 
           <IconButton
-            className={classes.badge}
+            className={classes.topBar}
             size="large"
             aria-label="show 17 new notifications"
             color="inherit"
@@ -218,12 +193,11 @@ export default function Header() {
             ></span>
           </div>
           <Avatar
+            className={classes.topBarfar}
             src="/static/images/avatar/3.jpg"
             variant="square"
-            className={classes.badge1}
           />
-
-          <Typography className={classes.badge}>Pratchaya N.</Typography>
+          <Typography>Pratchaya N.</Typography>
           <ArrowDropDownIcon />
         </div>
       </Toolbar>
