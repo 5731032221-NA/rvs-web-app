@@ -41,6 +41,12 @@ const useStyles = makeStyles((theme) => ({
   menuButtonHidden: {
     display: "none",
   },
+  // logoRevosoft: {
+  //   display: "none",
+  //   [theme.brealpoints.up("sm")]: {
+  //     display: "block",
+  //   },
+  // },
 }));
 
 const openedMixin = (theme) => ({
