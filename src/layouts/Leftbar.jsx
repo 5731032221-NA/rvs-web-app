@@ -1,27 +1,23 @@
 import * as React from "react";
 import logo_white from "../assets/images/logo_Revosoft.png";
+import {
+  Box,
+  CssBaseline,
+  Divider,
+  FormControl,
+  Grid,
+  IconButton,
+  MenuItem,
+  Select,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { makeStyles } from "@material-ui/core";
 import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import { FormControl, Grid, MenuItem, Select } from "@mui/material";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SortIcon from "@mui/icons-material/Sort";
-import { makeStyles } from "@mui/styles";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import clsx from "clsx";
 
@@ -41,12 +37,6 @@ const useStyles = makeStyles((theme) => ({
   menuButtonHidden: {
     display: "none",
   },
-  // logoRevosoft: {
-  //   display: "none",
-  //   [theme.brealpoints.up("sm")]: {
-  //     display: "block",
-  //   },
-  // },
 }));
 
 const openedMixin = (theme) => ({
@@ -145,10 +135,11 @@ export default function Leftbar({ children }) {
         }}
       />
       <CssBaseline />
+
       <AppBar className={classes.header} position="fixed" open={open}>
         <Toolbar>
           <img
-            className={classes.logoRevosoft}
+            className={classes.logoLg}
             src={logo_white}
             className={clsx(
               classes.logoExpand,
@@ -157,7 +148,6 @@ export default function Leftbar({ children }) {
             alt="..."
             height={40}
           />
-
           <IconButton
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -185,6 +175,7 @@ export default function Leftbar({ children }) {
               }}
             ></span>
           </div>
+
           <Header />
         </Toolbar>
       </AppBar>
