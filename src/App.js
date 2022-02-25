@@ -7,6 +7,7 @@ import Leftbar from "./layouts/Leftbar";
 
 import Dashboard from "./pages/Dashboard";
 import Reservation from "./pages/Reservation";
+import Main from "./pages/Main";
 
 import Farontdes from "./components/Farontdes/Farontdes";
 
@@ -22,18 +23,18 @@ function App() {
             exact
             path={`/dashboard`}
             element={
-              <Leftbar>
+              <Main>
                 <Dashboard />
-              </Leftbar>
+                </Main>
             }
           />
           <Route
             exact
             path={`/reservation`}
             element={
-              <Leftbar>
+              <Main>
                 <Reservation />
-              </Leftbar>
+              </Main>
             }
           />
 
@@ -41,9 +42,9 @@ function App() {
             exact
             path={`/farontdes`}
             element={
-              <Leftbar>
+              <Main>
                 <Farontdes />
-              </Leftbar>
+              </Main>
             }
           />
 

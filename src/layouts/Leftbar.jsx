@@ -117,7 +117,7 @@ const Drawer = styled(MuiDrawer, {
 export default function Leftbar({ children }) {
   const theme = useTheme();
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
