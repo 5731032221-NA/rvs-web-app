@@ -74,9 +74,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     borderRadius: theme.shape.borderRadius,
     height: "100%",
-    margin: "5px 0px 10px",
     marginLeft: theme.spacing(2),
-    marginTop: theme.spacing(2),
   },
   topBarSmall: {
     marginLeft: theme.spacing(2),
