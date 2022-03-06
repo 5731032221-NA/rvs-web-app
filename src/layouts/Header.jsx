@@ -178,7 +178,7 @@ export default function Header() {
     <>
       <Container maxWidth="xl">
         <Toolbar>
-          <Box sx={{ mr: 2, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ mr: 2, display: { xs: "none", sm: "flex" } }}>
             <div className={classes.tab}>
               <StyledTabs
                 value={value}
@@ -246,7 +246,7 @@ export default function Header() {
             </div>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}>
             {/* <IconButton
               size="large"
               aria-label="display more actions"
@@ -293,7 +293,7 @@ export default function Header() {
           <Box sx={{ flexGrow: 1 }} />
 
           <Box sx={{ flexGrow: 0 }}>
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Box sx={{ display: { xs: "none", sm: "flex" } }}>
               <div className={classes.topbarRight1}>
                 <div className={classes.topbarRight}>
                   <Typography className={classes.topBar}>
@@ -342,7 +342,7 @@ export default function Header() {
               </div>
             </Box>
 
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+            <Box sx={{ display: { xs: "flex", sm: "none" } }}>
               <div className={classes.topbarRight}>
                 <IconButton
                   className={classes.topBar}
