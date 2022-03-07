@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  AppBar,
   Box,
   CssBaseline,
   Divider,
@@ -10,37 +11,28 @@ import {
   styled,
   Toolbar,
   Typography,
-} from "@mui/material";
-import {
-  alpha,
   Avatar,
-  Badge,
-  Button,
-  Container,
-  makeStyles,
   Menu,
-  Tab,
-  Tabs,
-  Tooltip,
-} from "@material-ui/core";
+  alpha,
+  Badge,
+} from "@mui/material";
+import { Container, makeStyles, Tab, Tabs } from "@material-ui/core";
 import {
   AccountCircle,
   ArrowDropDown,
-  Favorite,
   ImageAspectRatio,
   KingBedOutlined,
   MonetizationOn,
   NightsStayOutlined,
-  PersonPin,
-  Search,
 } from "@material-ui/icons";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
-import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
+import EditIcon from "@mui/icons-material/Edit";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import FileCopyIcon from "@mui/icons-material/FileCopy";
+import LogoutIcon from "@mui/icons-material/Logout";
+import SettingsIcon from "@mui/icons-material/Settings";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   tab: {
@@ -48,22 +40,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     borderRadius: theme.shape.borderRadius,
+    height: "50px",
     width: "100%",
-    [theme.breakpoints.down("sm")]: {
-      display: (props) => (props.open ? "flex" : "none"),
-      width: "70%",
-    },
   },
-
-  searchButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up("sm")]: {
-      display: "none",
+  topbarRight1: {
+    display: "none",
+    [theme.breakpoints.up("lg")]: {
+      display: "block",
     },
-  },
-  icons: {
-    alignItems: "center",
-    display: (props) => (props.open ? "none" : "flex"),
   },
   topbarRight: {
     display: "flex",
@@ -71,6 +55,28 @@ const useStyles = makeStyles((theme) => ({
   },
   topBar: {
     marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(2),
+  },
+  topdata: {
+    margin: "5px 10px 10px",
+  },
+  profile: {
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    borderRadius: theme.shape.borderRadius,
+    height: "100%",
+    marginLeft: theme.spacing(2),
+  },
+  profileSmall: {
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    borderRadius: theme.shape.borderRadius,
+    height: "100%",
+    marginLeft: theme.spacing(2),
+  },
+  topBarSmall: {
     marginLeft: theme.spacing(2),
   },
 }));
@@ -95,6 +101,47 @@ const StyledTabs = styled((props) => (
   },
 });
 
+const StyledMenu = styled((props) => (
+  <Menu
+    elevation={0}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "right",
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "right",
+    }}
+    {...props}
+  />
+))(({ theme }) => ({
+  "& .MuiPaper-root": {
+    borderRadius: 6,
+    marginTop: "5px",
+    minWidth: 180,
+    color:
+      theme.palette.mode === "light" ? "rgb(0, 0, 0)" : theme.palette.grey[300],
+    boxShadow:
+      "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
+    "& .MuiMenu-list": {
+      padding: "4px 0",
+    },
+    "& .MuiMenuItem-root": {
+      "& .MuiSvgIcon-root": {
+        fontSize: 18,
+        color: theme.palette.text.secondary,
+        marginRight: theme.spacing(1.5),
+      },
+      "&:active": {
+        backgroundColor: alpha(
+          theme.palette.primary.main,
+          theme.palette.action.selectedOpacity
+        ),
+      },
+    },
+  },
+}));
+
 export default function Header() {
   const classes = useStyles();
 
@@ -106,102 +153,22 @@ export default function Header() {
   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
+  const handleClose = () => {
     setAnchorEl(null);
-    handleMobileMenuClose();
   };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 2 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={2} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
 
   const navigate = useNavigate();
   const [selectedHeader, setSelectedHeader] = React.useState(0);
-  const [openFarontdesk, setOpenFarontdesk] = React.useState(false);
+  const [openFarontdes, setOpenFarontdes] = React.useState(false);
 
-  const handleClickFarontdesk = () => {
+  const handleClickDashboard = () => {
     setSelectedHeader(0);
-    setOpenFarontdesk(!openFarontdesk);
+    setOpenFarontdes(!openFarontdes);
     navigate("/farontdes");
   };
 
@@ -209,7 +176,7 @@ export default function Header() {
     <>
       <Container maxWidth="xl">
         <Toolbar>
-          <Box sx={{ mr: 2, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ mr: 2, display: { xs: "none", sm: "flex" } }}>
             <div className={classes.tab}>
               <StyledTabs
                 value={value}
@@ -223,8 +190,10 @@ export default function Header() {
                   icon={<ImageAspectRatio />}
                   style={{ textTransform: "none", fontSize: "12px" }}
                   label="Front Desk"
-                  onClick={handleClickFarontdesk}
+                  onClick={handleClickDashboard}
                   selected={selectedHeader === 0}
+                  //   onClick={handleClickFarontdesk}
+                  //   selected={selectedHeader === 0}
                 />
                 <span
                   style={{
@@ -238,8 +207,8 @@ export default function Header() {
                   icon={<KingBedOutlined />}
                   style={{ textTransform: "none", fontSize: "12px" }}
                   label="Reservation"
-                  onClick={handleClickFarontdesk}
-                  selected={selectedHeader === 0}
+                  //   onClick={handleClickFarontdesk}
+                  //   selected={selectedHeader === 0}
                 />
                 <span
                   style={{
@@ -253,8 +222,8 @@ export default function Header() {
                   icon={<MonetizationOn />}
                   style={{ textTransform: "none", fontSize: "12px" }}
                   label="Cashier"
-                  onClick={handleClickFarontdesk}
-                  selected={selectedHeader === 0}
+                  //   onClick={handleClickFarontdesk}
+                  //   selected={selectedHeader === 0}
                 />
                 <span
                   style={{
@@ -268,15 +237,15 @@ export default function Header() {
                   icon={<NightsStayOutlined />}
                   style={{ textTransform: "none", fontSize: "12px" }}
                   label="Night Auditor"
-                  onClick={handleClickFarontdesk}
-                  selected={selectedHeader === 0}
+                  //   onClick={handleClickFarontdesk}
+                  //   selected={selectedHeader === 0}
                 />
               </StyledTabs>
             </div>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}>
+            {/* <IconButton
               size="large"
               aria-label="display more actions"
               edge="end"
@@ -316,24 +285,63 @@ export default function Header() {
               selected={selectedHeader === 0}
             >
               <NightsStayOutlined />
-            </IconButton>
+            </IconButton> */}
           </Box>
 
           <Box sx={{ flexGrow: 1 }} />
 
           <Box sx={{ flexGrow: 0 }}>
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Box sx={{ display: { xs: "none", sm: "flex" } }}>
+              <div className={classes.topbarRight1}>
+                <div className={classes.topbarRight}>
+                  <Typography className={classes.topBar}>
+                    {dayjs().format("DD MMM YYYY")}{" "}
+                  </Typography>
+
+                  <span className={classes.topdata}>|</span>
+
+                  <Typography className={classes.topBar}>
+                    {dayjs().format("HH:mm A")}{" "}
+                  </Typography>
+
+                  <IconButton
+                    className={classes.topBar}
+                    size="large"
+                    aria-label="show 17 new notifications"
+                    color="inherit"
+                  >
+                    <Badge badgeContent={2} color="error">
+                      <NotificationsIcon />
+                    </Badge>
+                  </IconButton>
+
+                  <div>
+                    <span
+                      style={{
+                        color: "white",
+                        borderLeft: " 1px solid rgb(255 255 255 / 44%)",
+                        marginTop: 20,
+                        marginBottom: 20,
+                        marginLeft: 10,
+                      }}
+                    ></span>
+                  </div>
+
+                  <div className={classes.profile} onClick={handleClick}>
+                    <Avatar
+                      className={classes.topBar}
+                      variant="rounded"
+                      src="/static/images/avatar/3.jpg"
+                    />
+                    <Typography>Pratchaya N.</Typography>
+                    <ArrowDropDown />
+                  </div>
+                </div>
+              </div>
+            </Box>
+
+            <Box sx={{ display: { xs: "flex", sm: "none" } }}>
               <div className={classes.topbarRight}>
-                <Typography className={classes.topBar}>
-                  {dayjs().format("DD MMM YYYY")}{" "}
-                </Typography>
-
-                <span className={classes.topBar}>|</span>
-
-                <Typography className={classes.topBar}>
-                  {dayjs().format("HH:mm A")}{" "}
-                </Typography>
-
                 <IconButton
                   className={classes.topBar}
                   size="large"
@@ -356,34 +364,48 @@ export default function Header() {
                     }}
                   ></span>
                 </div>
-                <IconButton onClick={handleProfileMenuOpen} color="inherit">
+
+                <div className={classes.profileSmall} onClick={handleClick}>
                   <Avatar
-                    className={classes.topBar}
+                    className={classes.topBarSmall}
+                    variant="rounded"
                     src="/static/images/avatar/3.jpg"
-                    variant="square"
                   />
-                  <Typography>Pratchaya N.</Typography>
                   <ArrowDropDown />
-                </IconButton>
+                </div>
+
+                <StyledMenu
+                  id="demo-customized-menu"
+                  MenuListProps={{
+                    "aria-labelledby": "demo-customized-button",
+                  }}
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose} disableRipple>
+                    <EditIcon />
+                    Edit
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} disableRipple>
+                    <FileCopyIcon />
+                    Duplicate
+                  </MenuItem>
+                  <Divider sx={{ my: 0.5 }} />
+                  <MenuItem onClick={handleClose} disableRipple>
+                    <SettingsIcon />
+                    Settings
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} disableRipple>
+                    <LogoutIcon />
+                    Logout
+                  </MenuItem>
+                </StyledMenu>
               </div>
             </Box>
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
-            </Box>{" "}
           </Box>
         </Toolbar>
       </Container>
-      {renderMobileMenu}
-      {renderMenu}
     </>
   );
 }

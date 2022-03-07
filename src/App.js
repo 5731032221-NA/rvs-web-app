@@ -1,9 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
-import Leftbar from "./layouts/Leftbar";
 
 import Dashboard from "./pages/Dashboard";
 import Reservation from "./pages/Reservation";
@@ -25,7 +23,7 @@ function App() {
             element={
               <Main>
                 <Dashboard />
-                </Main>
+              </Main>
             }
           />
           <Route
