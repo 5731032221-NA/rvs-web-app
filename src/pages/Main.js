@@ -197,14 +197,14 @@ export default function Main({ children }) {
         }}
       />
       <CssBaseline />
-      <AppBar className={classes.header} position="fixed" open={open}>
+      <AppBar className={classes.header} position="fixed" open={open} style={matches ? {}:{zIndex: 0}}>
         <Toolbar>
           <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             <img
               src={logo_white}
               className={clsx(
                 classes.logoExpand,
-                open && classes.menuButtonHidden
+                 open && classes.menuButtonHidden
               )}
               alt="..."
               height={40}
