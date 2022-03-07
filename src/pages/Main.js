@@ -24,6 +24,8 @@ import SortIcon from "@mui/icons-material/Sort";
 import { makeStyles } from "@mui/styles";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import clsx from "clsx";
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 import Header from "../layouts/Header";
 import ListMenu from "./../middleware/listitems/ListMenu";
@@ -118,6 +120,13 @@ export default function Main({ children }) {
   const theme = useTheme();
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
+
+  React.useEffect(()=> {
+    console.log("matches:",matches);
+  },[matches])
 
   const handleDrawerOpen = () => {
     setOpen(true);
