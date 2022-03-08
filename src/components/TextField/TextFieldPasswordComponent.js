@@ -16,7 +16,8 @@ export default function TextFieldComponent({
   id="",
   label="",
   htmlFor="",
-  placeholder=""
+  placeholder="",
+  setValueComponent={}
 }) {
   const [values, setValues] = React.useState({
 
@@ -27,6 +28,9 @@ export default function TextFieldComponent({
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
+    setValueComponent({ ...values, [prop]: event.target.value });
+
+
   };
 
   const handleClickShowPassword = () => {

@@ -19,6 +19,8 @@ import TextFieldComponent from '../components/TextField/TextFieldComponent'
 import TextFieldPasswordComponent from '../components/TextField/TextFieldPasswordComponent'
 import Copyright from '../components/Utils/copyright'
 import ErrorMessageComponent from "../components/Utils/errorMessage";
+import auth from "../services/auth.service";
+import { useNavigate } from "react-router-dom";
 // import { createTheme } from '@mui/material/styles';
 // import ThemeProvider from '@mui/material/styles/ThemeProvider';
 // import green from '@mui/material/colors/green';
@@ -38,8 +40,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function App() {
+function Login() {
   const classes = useStyles();
+  const navigate = useNavigate();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errorUsername, setErrorUsername] = useState(false);
@@ -48,9 +51,61 @@ function App() {
   const [mainColor, setMainColor] = React.useState("#2D62ED");
   const [file, setFile] = useState("");
   const [updateData, setUpdateData] = useState({});
+  const [valueComponentUsername, setValueComponentUsername] = useState({username:""});
+  const [valueComponentPassword, setValueComponentPassword] = useState({password:""});
+  const [resTooken, setResToken] = useState(null);
+  const [errorCookie, setErrorCookie] = useState(false);
 
-  const handleSubmit = async (e) => { }
   const signIn = async () => {
+    
+    if (valueComponentUsername.username === null || valueComponentUsername.username === "" || !valueComponentUsername.username) {
+      setErrorUsername(true);
+      setErrorLogin(!errorLogin)
+    } else {
+      setErrorUsername(false);
+    }
+    if (valueComponentPassword.password === null || valueComponentPassword.password === "" || !valueComponentPassword.password) {
+      setErrorPassword(true);
+    } else {
+      setErrorPassword(false);
+    }
+    if (
+      (valueComponentUsername.username) &&
+      (valueComponentPassword.password)
+    ) {
+
+   
+      const token = await auth({
+        user: {
+          username:valueComponentUsername.username,
+          password:valueComponentPassword.password,
+        },
+      });
+
+      if (token.status == 2000) {
+        
+        setResToken(token);
+        // setToken(token);
+        var d1 = new Date(),
+          d2 = new Date(d1);
+        d2.setFullYear(d2.getFullYear() + 100);
+        // setCookie("UUID" ,  uuid.v4(), { path: '/', expires: d2 });
+        setErrorUsername(false);
+        setErrorPassword(false);
+        // if (cookies["UUID"] == null) {
+        //   if (username == "ADMIN" || username == "root") {
+        //     setDialogAdd(true);
+        //     setUpdateData({ type: deviceTypes[0].label });
+        //   } else setErrorCookie(true);
+        // } else setToken(token);
+        sessionStorage.setItem("contents", JSON.stringify(token.contents));
+        navigate("/dashboard");
+      } else {
+        setErrorLogin(true);
+      }
+    }
+  };
+  const handleSubmit = async () => {
     console.log("signin")
     setErrorLogin(!errorLogin)
   };
@@ -138,13 +193,15 @@ function App() {
           {errorLogin ? <ErrorMessageComponent text="Invalid Username or Password" /> : null}
           <Grid item className="formlogin">
             {/* Validate */}
-            <form autoComplete="on" onSubmit={handleSubmit}>
+            <form >
               <Grid item>
                 <TextFieldComponent
                   id="username"
                   label=" Username "
                   htmlFor="Username"
                   placeholder="Revosoft@Metrosystems.co.th"
+                  setValueComponent={setValueComponentUsername}
+                  valueComponent={valueComponentUsername}
                 // onChange={(e) => setUserName(e.target.value)}
                 ></TextFieldComponent>
               </Grid>
@@ -154,7 +211,9 @@ function App() {
                   label="Password"
                   htmlFor="password"
                   type="password"
-                // onChange={(e) => setPassword(e.target.value)}
+                  setValueComponent={setValueComponentPassword}
+                  valueComponent={valueComponentPassword}
+                  // onChange={(e) => setPassword(e.target.value)}
                 ></TextFieldPasswordComponent>
               </Grid>
               <Grid item style={{ paddingTop: 25, paddingBottom: 20 }} >
@@ -177,5 +236,5 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
 

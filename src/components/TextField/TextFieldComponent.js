@@ -13,10 +13,23 @@ export default function TextFieldComponent({
   id = "",
   label = "",
   htmlFor = "",
-  placeholder = ""
+  placeholder = "",
+  setValueComponent={},
+  valueComponent={}
 }) {
   //Button color;
   const classes = styles();
+
+  const [values, setValues] = React.useState(valueComponent);
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+    setValueComponent({ ...values, [prop]: event.target.value });
+
+
+  };
+
+
   return <TextField
     id={id}
     label={label}
@@ -24,6 +37,8 @@ export default function TextFieldComponent({
     className="Path-459"
     placeholder={placeholder}
     type="text"
+    value={Object.keys(valueComponent).length === 0 ? "" : values[Object.keys(valueComponent)[0]]}
+    onChange={handleChange( Object.keys(valueComponent).length === 0 ? "" : Object.keys(valueComponent)[0])}
     variant="filled"
     InputProps={{
       className: classes.textFieldColor
