@@ -15,8 +15,10 @@ import {
   Menu,
   alpha,
   Badge,
+  Tabs,
+  Tab,
+  Container,
 } from "@mui/material";
-import { Container, makeStyles, Tab, Tabs } from "@material-ui/core";
 import {
   AccountCircle,
   ArrowDropDown,
@@ -33,14 +35,14 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useNavigate } from "react-router-dom";
+import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   tab: {
     display: "flex",
-    alignItems: "center",
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     borderRadius: theme.shape.borderRadius,
-    height: "50px",
+    height: "60px",
     width: "100%",
   },
   topbarRight1: {
@@ -166,7 +168,7 @@ export default function Header() {
   const [selectedHeader, setSelectedHeader] = React.useState(0);
   const [openFarontdes, setOpenFarontdes] = React.useState(false);
 
-  const handleClickDashboard = () => {
+  const handleClickFarontdesk = () => {
     setSelectedHeader(0);
     setOpenFarontdes(!openFarontdes);
     navigate("/farontdes");
@@ -182,6 +184,7 @@ export default function Header() {
                 value={value}
                 onChange={handleChange}
                 aria-label="basic tabs example"
+                textColor="inherit"
                 TabIndicatorProps={{
                   style: { backgroundColor: wordColor },
                 }}
@@ -190,10 +193,8 @@ export default function Header() {
                   icon={<ImageAspectRatio />}
                   style={{ textTransform: "none", fontSize: "12px" }}
                   label="Front Desk"
-                  onClick={handleClickDashboard}
+                  onClick={handleClickFarontdesk}
                   selected={selectedHeader === 0}
-                  //   onClick={handleClickFarontdesk}
-                  //   selected={selectedHeader === 0}
                 />
                 <span
                   style={{
@@ -244,49 +245,7 @@ export default function Header() {
             </div>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}>
-            {/* <IconButton
-              size="large"
-              aria-label="display more actions"
-              edge="end"
-              color="inherit"
-              onClick={handleClickFarontdesk}
-              selected={selectedHeader === 0}
-            >
-              <ImageAspectRatio />
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="display more actions"
-              edge="end"
-              color="inherit"
-              onClick={handleClickFarontdesk}
-              selected={selectedHeader === 0}
-            >
-              <KingBedOutlined />
-            </IconButton>
-
-            <IconButton
-              size="large"
-              aria-label="display more actions"
-              edge="end"
-              color="inherit"
-              onClick={handleClickFarontdesk}
-              selected={selectedHeader === 0}
-            >
-              <MonetizationOn />
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="display more actions"
-              edge="end"
-              color="inherit"
-              onClick={handleClickFarontdesk}
-              selected={selectedHeader === 0}
-            >
-              <NightsStayOutlined />
-            </IconButton> */}
-          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}></Box>
 
           <Box sx={{ flexGrow: 1 }} />
 

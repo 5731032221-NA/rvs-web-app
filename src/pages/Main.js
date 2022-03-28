@@ -16,10 +16,17 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { FormControl, Grid, MenuItem, Select } from "@mui/material";
+import {
+  alpha,
+  FormControl,
+  Grid,
+  MenuItem,
+  Select,
+  Tab,
+  Tabs,
+} from "@mui/material";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SortIcon from "@mui/icons-material/Sort";
-import { makeStyles } from "@mui/styles";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import clsx from "clsx";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -27,6 +34,14 @@ import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Header from "../layouts/Header";
 import ListMenu from "./../middleware/listitems/ListMenu";
 import BottomBar from "../layouts/BottomBar";
+import {
+  ImageAspectRatio,
+  KingBedOutlined,
+  MonetizationOn,
+  NightsStayOutlined,
+} from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -39,6 +54,15 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButtonHidden: {
     display: "none",
+  },
+  tab: {
+    display: "flex",
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    borderRadius: theme.shape.borderRadius,
+    height: "60px",
+    width: "100%",
+    maxWidth: "365px",
+    marginLeft: "50px",
   },
 }));
 
@@ -107,6 +131,35 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  paddingTop: theme.spacing(1),
+  paddingBottom: theme.spacing(1),
+  // Override media queries injected by theme.mixins.toolbar
+  "@media all": {
+    minHeight: 100,
+  },
+}));
+
+const StyledTabs = styled((props) => (
+  <Tabs
+    {...props}
+    TabIndicatorProps={{
+      children: <span className="MuiTabs-indicatorSpan" />,
+    }}
+  />
+))({
+  "& .MuiTabs-indicator": {
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+  },
+  "& .MuiTabs-indicatorSpan": {
+    maxWidth: 100,
+    width: "100%",
+    backgroundColor: "#00aeff",
+  },
+});
+
 export default function Main({ children }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
@@ -114,6 +167,11 @@ export default function Main({ children }) {
   const [open, setOpen] = React.useState(true);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { window } = children;
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const [state, setState] = React.useState({
     top: false,
@@ -164,12 +222,9 @@ export default function Main({ children }) {
     </Box>
   );
 
-
-
-
-  React.useEffect(()=> {
-    console.log("matches:",matches);
-  },[matches])
+  React.useEffect(() => {
+    console.log("matches:", matches);
+  }, [matches]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -177,6 +232,16 @@ export default function Main({ children }) {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const navigate = useNavigate();
+  const [selectedHeader, setSelectedHeader] = React.useState(0);
+  const [openFarontdes, setOpenFarontdes] = React.useState(false);
+
+  const handleClickFarontdesk = () => {
+    setSelectedHeader(0);
+    setOpenFarontdes(!openFarontdes);
+    navigate("/farontdes");
   };
 
   return (
@@ -197,14 +262,19 @@ export default function Main({ children }) {
         }}
       />
       <CssBaseline />
-      <AppBar className={classes.header} position="fixed" open={open} style={matches ? {}:{zIndex: 0}}>
+      <AppBar
+        className={classes.header}
+        position="fixed"
+        open={open}
+        style={matches ? {} : { zIndex: 0 }}
+      >
         <Toolbar>
           <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             <img
               src={logo_white}
               className={clsx(
                 classes.logoExpand,
-                 open && classes.menuButtonHidden
+                open && classes.menuButtonHidden
               )}
               alt="..."
               height={40}
@@ -239,18 +309,71 @@ export default function Main({ children }) {
             </IconButton>
           </Box>
 
-          <div className={classes.sectionDesktop}>
-            <span
-              style={{
-                color: "white",
-                borderLeft: " 1px solid rgb(255 255 255 / 44%)",
-                marginTop: 20,
-                marginBottom: 20,
-              }}
-            ></span>
-          </div>
+          <Box sx={{ display: { xs: "none", sm: "flex" } }}>
+            <div className={classes.sectionDesktop}>
+              <span
+                style={{
+                  color: "white",
+                  borderLeft: " 1px solid rgb(255 255 255 / 44%)",
+                  marginTop: 20,
+                  marginBottom: 20,
+                }}
+              ></span>
+            </div>
+          </Box>
+
           <Header />
         </Toolbar>
+
+        <Divider />
+
+        <Box sx={{ display: { xs: "flex", sm: "none" } }}>
+          <StyledToolbar>
+            <div className={classes.tab}>
+              <StyledTabs
+                value={value}
+                onChange={handleChange}
+                variant="scrollable"
+                scrollButtons
+                allowScrollButtonsMobile
+                aria-label="scrollable force tabs example"
+                textColor="inherit"
+              >
+                <Tab
+                  icon={<ImageAspectRatio />}
+                  style={{ textTransform: "none", fontSize: "12px" }}
+                  label="Front Desk"
+                  onClick={handleClickFarontdesk}
+                  selected={selectedHeader === 0}
+                />
+
+                <Tab
+                  icon={<KingBedOutlined />}
+                  style={{ textTransform: "none", fontSize: "12px" }}
+                  label="Reservation"
+                  //   onClick={handleClickFarontdesk}
+                  //   selected={selectedHeader === 0}
+                />
+
+                <Tab
+                  icon={<MonetizationOn />}
+                  style={{ textTransform: "none", fontSize: "12px" }}
+                  label="Cashier"
+                  //   onClick={handleClickFarontdesk}
+                  //   selected={selectedHeader === 0}
+                />
+
+                <Tab
+                  icon={<NightsStayOutlined />}
+                  style={{ textTransform: "none", fontSize: "12px" }}
+                  label="Night Auditor"
+                  //   onClick={handleClickFarontdesk}
+                  //   selected={selectedHeader === 0}
+                />
+              </StyledTabs>
+            </div>
+          </StyledToolbar>
+        </Box>
       </AppBar>
 
       {matches ? (
@@ -282,51 +405,53 @@ export default function Main({ children }) {
           </DrawerHeader>
           <Divider />
 
-          {open ? 
-          <Grid
-            item
-            container
-            spacing={1}
-            style={{ paddingLeft: 30, marginTop: 25, paddingBottom: 10 }}
-          >
-            <Grid item container spacing={1}>
-              <Typography
-                variant="subtitle1"
-                style={{ fontSize: 12, paddingLeft: 50, marginTop: -10 }}
-              >
-                {" Change Property"}
-              </Typography>
-            </Grid>
-
-            <Grid sx={{ bgcolor: "#ffff", borderRadius: "5px" }}>
-              <SwapHorizIcon
-                style={{
-                  paddingRight: 0,
-                  color: "#000",
-                  fontSize: 25,
-                  marginTop: "10px",
-                  marginLeft: "5px",
-                }}
-              />
-         
-              <FormControl
-                variant="filled"
-                style={{ backgroundColor: "white", borderRadius: 5 }}
-              >
-                <Select
-                  name="selectprop"
-                  id="selectprop"
-                  value="Metro Pattaya"
-                  style={{ width: 160, height: 40, backgroundColor: "white" }}
+          {open ? (
+            <Grid
+              item
+              container
+              spacing={1}
+              style={{ paddingLeft: 30, marginTop: 25, paddingBottom: 10 }}
+            >
+              <Grid item container spacing={1}>
+                <Typography
+                  variant="subtitle1"
+                  style={{ fontSize: 12, paddingLeft: 50, marginTop: -10 }}
                 >
-                  <MenuItem value="Metro Pattaya" label="Metro Pattaya">
-                    <div style={{ marginTop: -7 }}>Metro Pattaya</div>
-                  </MenuItem>
-                </Select>
-              </FormControl>
+                  {" Change Property"}
+                </Typography>
+              </Grid>
+
+              <Grid sx={{ bgcolor: "#ffff", borderRadius: "5px" }}>
+                <SwapHorizIcon
+                  style={{
+                    paddingRight: 0,
+                    color: "#000",
+                    fontSize: 25,
+                    marginTop: "10px",
+                    marginLeft: "5px",
+                  }}
+                />
+
+                <FormControl
+                  variant="filled"
+                  style={{ backgroundColor: "white", borderRadius: 5 }}
+                >
+                  <Select
+                    name="selectprop"
+                    id="selectprop"
+                    value="Metro Pattaya"
+                    style={{ width: 160, height: 40, backgroundColor: "white" }}
+                  >
+                    <MenuItem value="Metro Pattaya" label="Metro Pattaya">
+                      <div style={{ marginTop: -7 }}>Metro Pattaya</div>
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
             </Grid>
-          </Grid>
-           : ""}
+          ) : (
+            ""
+          )}
           <ListMenu />
         </Drawer>
       ) : (
@@ -360,50 +485,52 @@ export default function Main({ children }) {
             </IconButton>
           </DrawerHeader>
           <Divider />
-          {open ? 
-          <Grid
-            item
-            container
-            spacing={1}
-            style={{ paddingLeft: 30, marginTop: 25, paddingBottom: 10 }}
-          >
-            <Grid item container spacing={1}>
-              <Typography
-                variant="subtitle1"
-                style={{ fontSize: 12, paddingLeft: 50, marginTop: -10 }}
-              >
-                {" Change Property"}
-              </Typography>
-            </Grid>
-
-            <Grid sx={{ bgcolor: "#ffff", borderRadius: "5px" }}>
-              <SwapHorizIcon
-                style={{
-                  paddingRight: 0,
-                  color: "#000",
-                  fontSize: 25,
-                  marginTop: "10px",
-                  marginLeft: "5px",
-                }}
-              />
-              <FormControl
-                variant="filled"
-                style={{ backgroundColor: "white", borderRadius: 5 }}
-              >
-                <Select
-                  name="selectprop"
-                  id="selectprop"
-                  value="Metro Pattaya"
-                  style={{ width: 160, height: 40, backgroundColor: "white" }}
+          {open ? (
+            <Grid
+              item
+              container
+              spacing={1}
+              style={{ paddingLeft: 30, marginTop: 25, paddingBottom: 10 }}
+            >
+              <Grid item container spacing={1}>
+                <Typography
+                  variant="subtitle1"
+                  style={{ fontSize: 12, paddingLeft: 50, marginTop: -10 }}
                 >
-                  <MenuItem value="Metro Pattaya" label="Metro Pattaya">
-                    <div style={{ marginTop: -7 }}>Metro Pattaya</div>
-                  </MenuItem>
-                </Select>
-              </FormControl>
+                  {" Change Property"}
+                </Typography>
+              </Grid>
+
+              <Grid sx={{ bgcolor: "#ffff", borderRadius: "5px" }}>
+                <SwapHorizIcon
+                  style={{
+                    paddingRight: 0,
+                    color: "#000",
+                    fontSize: 25,
+                    marginTop: "10px",
+                    marginLeft: "5px",
+                  }}
+                />
+                <FormControl
+                  variant="filled"
+                  style={{ backgroundColor: "white", borderRadius: 5 }}
+                >
+                  <Select
+                    name="selectprop"
+                    id="selectprop"
+                    value="Metro Pattaya"
+                    style={{ width: 160, height: 40, backgroundColor: "white" }}
+                  >
+                    <MenuItem value="Metro Pattaya" label="Metro Pattaya">
+                      <div style={{ marginTop: -7 }}>Metro Pattaya</div>
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
             </Grid>
-          </Grid>
-           : ""}
+          ) : (
+            ""
+          )}
           <ListMenu />
         </SwipeableDrawer>
       )}
