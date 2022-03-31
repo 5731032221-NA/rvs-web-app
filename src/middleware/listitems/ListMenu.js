@@ -123,6 +123,7 @@ function ListMenu() {
   const handleClickConfiguration = () => {
     setSelectedIndex(9);
     setOpenConfiguration(!openConfiguration);
+    navigate("/configuration");
   };
 
   const handleClickSystemsTools = () => {

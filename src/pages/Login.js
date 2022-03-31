@@ -21,6 +21,14 @@ import Copyright from '../components/Utils/copyright'
 import ErrorMessageComponent from "../components/Utils/errorMessage";
 import auth from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
+
+import propertyPermission from "../services/propertypermission.service";
+import propertyRole from "../services/propertyrole.service";
+
+import { EDIT_PROPERTY, EDIT_COMPONENT } from "../middleware/action";
+import { EDIT_PERMISSION } from "../middleware/action";
+import { ReactReduxContext } from "react-redux";
+
 // import { createTheme } from '@mui/material/styles';
 // import ThemeProvider from '@mui/material/styles/ThemeProvider';
 // import green from '@mui/material/colors/green';
@@ -40,8 +48,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Login() {
+function Login({ setToken }) {
   const classes = useStyles();
+  const { store } = useContext(ReactReduxContext);
   const navigate = useNavigate();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -55,6 +64,9 @@ function Login() {
   const [valueComponentPassword, setValueComponentPassword] = useState({password:""});
   const [resTooken, setResToken] = useState(null);
   const [errorCookie, setErrorCookie] = useState(false);
+
+  const [selectedProperty, setSelectedProperty] = useState("SPJ1");
+
 
   const signIn = async () => {
     
@@ -83,7 +95,7 @@ function Login() {
       });
 
       if (token.status == 2000) {
-        
+        setToken(token)
         setResToken(token);
         // setToken(token);
         var d1 = new Date(),
@@ -99,12 +111,54 @@ function Login() {
         //   } else setErrorCookie(true);
         // } else setToken(token);
         sessionStorage.setItem("contents", JSON.stringify(token.contents));
+        await handleSelect();
         navigate("/dashboard");
       } else {
         setErrorLogin(true);
       }
     }
   };
+
+
+
+  const handleSelect = async () => {
+    setSelectedProperty(JSON.parse(sessionStorage.getItem("grantproperty"))[0].propertycode);
+    console.log("sessionStorage.getItem(username):",sessionStorage.getItem("username"));
+    const permission = await propertyPermission(
+      sessionStorage.getItem("auth"),
+      selectedProperty,
+      sessionStorage.getItem("username")
+    );
+    console.log("permission", permission);
+
+    // sessionStorage.setItem("permissionref", permission.content[permission.content.length - 1]);
+    store.dispatch({
+      type: EDIT_PERMISSION,
+      payload: permission.content[permission.content.length - 1],
+    });
+
+    const role = await propertyRole(
+      sessionStorage.getItem("auth"),
+      selectedProperty,
+      sessionStorage.getItem("username")
+    );
+    sessionStorage.setItem("role", role.content[role.content.length - 1]);
+    console.log("::role::", role.content[role.content.length - 1]);
+    // const menu = await menus(sessionStorage.getItem("auth"),selectedProperty);
+    // sessionStorage.setItem('comp', JSON.stringify(menu.content.components));
+    store.dispatch({
+      type: EDIT_PROPERTY,
+      payload: selectedProperty,
+    });
+    sessionStorage.setItem("property", selectedProperty);
+    console.log("Dashboard::::::");
+    store.dispatch({
+      type: EDIT_COMPONENT,
+      payload: "Dashboard",
+    });
+    
+  };
+
   const handleSubmit = async () => {
     console.log("signin")
     setErrorLogin(!errorLogin)
