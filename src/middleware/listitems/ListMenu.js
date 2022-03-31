@@ -70,6 +70,9 @@ function ListMenu() {
   const [openSystemsTools, setOpenSystemsTools] = React.useState(false);
   const [openDashboard, setOpenDashboard] = React.useState(false);
   const [openReservation, setOpenReservation] = React.useState(false);
+  const [openIndividual, setOpenIndividual] = React.useState(false);
+  const [openTravelagent, setOpenTravelagent] = React.useState(false);
+  const [openCompany, setOpenCompany] = React.useState(false);
 
   const setFontSize = {
     fontSize: 14,
@@ -141,6 +144,24 @@ function ListMenu() {
     setSelectedIndex(1);
     setOpenReservation(!openReservation);
     navigate("/reservation");
+  };
+
+  const handleClickIndividual = () => {
+    setSelectedIndex(11);
+    setOpenIndividual(!openIndividual);
+    navigate("/profileIndividual");
+  };
+
+  const handleClickTravelagent = () => {
+    setSelectedIndex(12);
+    setOpenTravelagent(!openTravelagent);
+    navigate("/profiletravelagent");
+  };
+
+  const handleClickCompany = () => {
+    setSelectedIndex(13);
+    setOpenCompany(!openCompany);
+    navigate("/profilepagecompany");
   };
 
   return (
@@ -301,6 +322,7 @@ function ListMenu() {
             <ListItemText
               primaryTypographyProps={{ style: setFontSize }}
               primary="Individual"
+              onClick={handleClickIndividual}
             />
           </ListItemButton>
 
@@ -308,6 +330,7 @@ function ListMenu() {
             <ListItemText
               primaryTypographyProps={{ style: setFontSize }}
               primary="Travel Agent"
+              onClick={handleClickTravelagent}
             />
           </ListItemButton>
 
@@ -315,6 +338,7 @@ function ListMenu() {
             <ListItemText
               primaryTypographyProps={{ style: setFontSize }}
               primary="Company"
+              onClick={handleClickCompany}
             />
           </ListItemButton>
 

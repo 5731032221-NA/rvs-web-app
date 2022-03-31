@@ -17,6 +17,10 @@ import UserManagement from "./pages/configurations/UserManagement";
 import Main from "./pages/Main";
 
 import Farontdes from "./components/Farontdes/Farontdes";
+import ProfileTableIndividual from "./components/Profiles/ProfileTableIndividual";
+import ProfileIndividual from "./components/Profiles/ProfileIndividual";
+import { ProfileTableTravelAgent } from "./components/Profiles/ProfileTableTravelAgent";
+import { ProfileTableCompany } from "./components/Profiles/ProfileTableCompany";
 
 function App() {
   const [store, setStore] = useState(configureStore());
@@ -32,7 +36,6 @@ function App() {
               element={<Login setToken={setToken} store={store} />}
             />
             <Route exact path={`/login`} element={<Login />} />
-
             <Route
               exact
               path={`/dashboard`}
@@ -51,7 +54,6 @@ function App() {
                 </Main>
               }
             />
-
             <Route
               exact
               path={`/farontdes`}
@@ -61,7 +63,6 @@ function App() {
                 </Main>
               }
             />
-
             <Route
               exact
               path={`/configuration`}
@@ -71,7 +72,6 @@ function App() {
                 </Main>
               }
             />
-
             <Route
               exact
               path={`/computerPrinter`}
@@ -81,7 +81,6 @@ function App() {
                 </Main>
               }
             />
-
             <Route
               exact
               path={`/deviceManager`}
@@ -91,7 +90,6 @@ function App() {
                 </Main>
               }
             />
-
             <Route
               exact
               path={`/roleManagement`}
@@ -101,7 +99,6 @@ function App() {
                 </Main>
               }
             />
-
             <Route
               exact
               path={`/roomManagement`}
@@ -111,13 +108,40 @@ function App() {
                 </Main>
               }
             />
-
             <Route
               exact
               path={`/userManagement`}
               element={
                 <Main>
                   <UserManagement />
+                </Main>
+              }
+            />
+
+            <Route
+              exact
+              path={`/profileIndividual`}
+              element={
+                <Main>
+                  <ProfileTableIndividual />
+                </Main>
+              }
+            />
+            <Route
+              exact
+              path={`/profiletravelagent`}
+              element={
+                <Main>
+                  <ProfileTableTravelAgent />
+                </Main>
+              }
+            />
+            <Route
+              exact
+              path={`/profilepagecompany`}
+              element={
+                <Main>
+                  <ProfileTableCompany />
                 </Main>
               }
             />

@@ -45,12 +45,7 @@ const useStyles = makeStyles((theme) => ({
     height: "60px",
     width: "100%",
   },
-  topbarRight1: {
-    display: "none",
-    [theme.breakpoints.up("lg")]: {
-      display: "block",
-    },
-  },
+
   topbarRight: {
     display: "flex",
     alignItems: "center",
@@ -178,7 +173,7 @@ export default function Header() {
     <>
       <Container maxWidth="xl">
         <Toolbar>
-          <Box sx={{ mr: 2, display: { xs: "none", sm: "flex" } }}>
+          <Box sx={{ mr: 2, display: { xs: "none", md: "flex" } }}>
             <div className={classes.tab}>
               <StyledTabs
                 value={value}
@@ -245,12 +240,12 @@ export default function Header() {
             </div>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}></Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}></Box>
 
           <Box sx={{ flexGrow: 1 }} />
 
           <Box sx={{ flexGrow: 0 }}>
-            <Box sx={{ display: { xs: "none", sm: "flex" } }}>
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <div className={classes.topbarRight1}>
                 <div className={classes.topbarRight}>
                   <Typography className={classes.topBar}>
@@ -299,7 +294,7 @@ export default function Header() {
               </div>
             </Box>
 
-            <Box sx={{ display: { xs: "flex", sm: "none" } }}>
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <div className={classes.topbarRight}>
                 <IconButton
                   className={classes.topBar}
