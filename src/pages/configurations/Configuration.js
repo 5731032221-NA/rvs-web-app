@@ -338,8 +338,12 @@ export default function Configuration() {
     },
   ]);
 
-  const updateProperty = useSelector((state) => state.reducer.property);
-  const [property, setProperty] = React.useState(updateProperty);
+  // const updateProperty = useSelector((state) => state.reducer.property);
+  // const [property, setProperty] = React.useState(updateProperty);
+  const updateProperty = sessionStorage.getItem("property");
+  const [property, setProperty] = React.useState(sessionStorage.getItem("property"));
+
+
 
   const [themeState, setThemeState] = React.useState({
     background: "#FFFFFF",

@@ -671,7 +671,8 @@ export default function UserManagement() {
 
   const handleComponentState = async (comp) => {
     const comlower = comp.toLowerCase();
-    navigate.replace(`/${comlower}`);
+    console.log('comp:',comlower);
+    navigate(`/${comlower}`);
     store.dispatch({
       type: EDIT_CONFIGSTATE,
       payload: comp,

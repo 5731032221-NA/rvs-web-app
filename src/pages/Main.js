@@ -169,6 +169,10 @@ export default function Main({ children }) {
   const { window } = children;
   const [value, setValue] = React.useState(0);
 
+  React.useEffect(() => {
+    document.querySelector('body').style.backgroundColor = '#fafafa';
+ }, []);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -248,6 +252,7 @@ export default function Main({ children }) {
     <Box sx={{ display: "flex" }}>
       <GlobalStyles
         styles={{
+         
           h1: { color: "white" },
           "*::-webkit-scrollbar": {
             width: "0.1em",
@@ -256,7 +261,7 @@ export default function Main({ children }) {
             "-webkit-box-shadow": "inset 0 0 1px #ffffff",
           },
           "*::-webkit-scrollbar-thumb": {
-            backgroundColor: "white)",
+            backgroundColor: "white",
             outline: "1px solid #ffffff",
           },
         }}
@@ -534,7 +539,7 @@ export default function Main({ children }) {
           <ListMenu />
         </SwipeableDrawer>
       )}
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1,  }}>
         <DrawerHeader />
 
         {children}

@@ -235,7 +235,7 @@ export default function ComputerPrinter() {
   };
   const handleComponentState = async (comp) => {
     const comlower = comp.toLowerCase();
-    navigate.replace(`/${comlower}`);
+    navigate(`/${comlower}`);
     store.dispatch({
       type: EDIT_CONFIGSTATE,
       payload: comp,
