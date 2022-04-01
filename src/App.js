@@ -19,8 +19,8 @@ import Main from "./pages/Main";
 import Farontdes from "./components/Farontdes/Farontdes";
 import ProfileTableIndividual from "./components/Profiles/ProfileTableIndividual";
 import ProfileIndividual from "./components/Profiles/ProfileIndividual";
-import { ProfileTableTravelAgent } from "./components/Profiles/ProfileTableTravelAgent";
-import { ProfileTableCompany } from "./components/Profiles/ProfileTableCompany";
+import ProfileTableTravelAgent from "./components/Profiles/ProfileTableTravelAgent";
+import ProfileTableCompany from "./components/Profiles/ProfileTableCompany";
 
 function App() {
   const [store, setStore] = useState(configureStore());
@@ -136,6 +136,7 @@ function App() {
                 </Main>
               }
             />
+
             <Route
               exact
               path={`/profilepagecompany`}

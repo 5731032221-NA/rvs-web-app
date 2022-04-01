@@ -33,6 +33,7 @@ import {
 } from "../../services/companyprofile.service";
 import MaterialButtonComponent from "../Button/MaterialButtonComponent";
 import MaterialBreadcrumbsComponent from "../Breadcrumbs/MaterialBreadcrumbsComponent";
+import { getConfigurationByPropertyCode } from "../../services/user.service";
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
@@ -96,6 +97,245 @@ export const ProfileTableCompany = (props) => {
   });
   const themeBackground = useSelector((state) => state.reducer.themeBackground);
 
+  const [data, setData] = React.useState([
+    {
+      id: 1000000001,
+      RefNo: "1.1",
+      code: "CFGPMS",
+      name_en: "PMS Configuration",
+      name_th: "การกำหนดค่า PMS",
+      name_cn: "PMS 配置",
+      description: "CFGPMS description",
+      createdate: "2021-08-13 12:03:00",
+      master: true,
+      addchild: false,
+      children: [
+        {
+          id: 1000000002,
+          RefNo: "1.1.1",
+          code: "CFGPROP",
+          name_en: "Property Configuration",
+          name_th: "การกำหนดค่า Property",
+          description: "CFGPROP Configuration",
+          createdate: "2021-08-13 12:03:00",
+          master: true,
+          addchild: false,
+          children: [
+            {
+              id: 1000000003,
+              RefNo: "1.1.1.1",
+              code: "PROPERTY",
+              name_en: "Property Master",
+              description: "PROPERTY description",
+              createdate: "2021-08-13 12:03:00",
+              master: true,
+              addchild: true,
+            },
+            {
+              id: 1000000004,
+              RefNo: "1.1.1.2",
+              code: "BUILDING",
+              name_en: "Building Master",
+              description: "BUILDING description",
+              createdate: "2021-08-13 12:03:00",
+              master: true,
+              addchild: true,
+            },
+            {
+              id: 1000000005,
+              RefNo: "1.1.1.3",
+              code: "EXPOSURE",
+              name_en: "Exposure",
+              description: "EXPOSURE description",
+              createdate: "2021-08-13 12:03:00",
+              master: true,
+              addchild: true,
+            },
+            {
+              id: 1000000006,
+              RefNo: "1.1.1.4",
+              code: "FLOOR",
+              name_en: "Floor",
+              name_th: "ชั้น",
+              description: "FLOOR description",
+              createdate: "2021-08-13 12:03:00",
+              master: true,
+              addchild: true,
+            },
+            {
+              id: 1000000007,
+              RefNo: "1.1.1.5",
+              code: "ZONE",
+              name_en: "Zone/Wing",
+              description: "ZONE description",
+              createdate: "2021-08-13 12:03:00",
+              master: true,
+              addchild: true,
+            },
+          ],
+        },
+        {
+          id: 1000000008,
+          RefNo: "1.1.2",
+          code: "CFGROOM",
+          name_en: "Room Configuration",
+          name_th: "การกำหนดค่าห้อง",
+          description: "CFGROOM description",
+          createdate: "2021-08-13 12:03:00",
+          master: true,
+          addchild: false,
+          children: [
+            {
+              id: 1000000009,
+              RefNo: "1.1.2.1",
+              code: "RMTYPE",
+              name_en: "Room Type",
+              name_th: "ประเภทห้อง",
+              description: "RMTYPE description",
+              master: true,
+              addchild: true,
+              createdate: "2021-08-13 12:03:00",
+            },
+            {
+              id: 1000000010,
+              RefNo: "1.1.2.2",
+              code: "RMCAT",
+              name_en: "Room Category",
+              name_th: "ประเภทห้อง",
+              description: "RMCAT description",
+              master: true,
+              addchild: true,
+              createdate: "2021-08-13 12:03:00",
+            },
+            {
+              id: 1000000011,
+              RefNo: "1.1.2.3",
+              code: "ROOM",
+              name_en: "Room Master Maintenance",
+              name_th: "การบำรุงรักษาห้องมาสเตอร์",
+              description: "ROOM description",
+              master: true,
+              addchild: true,
+              createdate: "2021-08-13 12:03:00",
+            },
+          ],
+        },
+        {
+          id: 1000000012,
+          RefNo: "1.1.3",
+          code: "CFGITEM",
+          name_en: "Item Configuration",
+          name_th: "การกำหนดค่ารายการ",
+          description: "CFGITEM description",
+          createdate: "2021-08-13 12:03:00",
+          master: true,
+          addchild: false,
+          children: [
+            {
+              id: 1000000013,
+              RefNo: "1.1.3.1",
+              code: "ITEMTYPE",
+              name_en: "Item Type",
+              name_th: "ประเภทรายการ",
+              description: "ITEMTYPE description",
+              createdate: "2021-08-13 12:03:00",
+              master: true,
+              addchild: true,
+            },
+            {
+              id: 1000000014,
+              RefNo: "1.1.3.2",
+              code: "ITEMCAT",
+              name_en: "Item Category",
+              name_th: "หมวดหมู่รายการ",
+              description: "ITEMCAT description",
+              createdate: "2021-08-13 12:03:00",
+              master: true,
+              addchild: true,
+            },
+          ],
+        },
+        {
+          id: 1000000015,
+          RefNo: "1.1.4",
+          code: "CFGRSVN",
+          name_en: "Reservation Configuration",
+          name_th: "การกำหนดค่าการจอง",
+          description: "CFGRSVN description",
+          createdate: "2021-08-13 12:03:00",
+          master: true,
+          addchild: false,
+          children: [
+            {
+              id: 1000000016,
+              RefNo: "1.1.4.1",
+              code: "MARKET",
+              name_en: "Market segment Maintenance",
+              name_th: "การบำรุงรักษาส่วนตลาด",
+              description: "MARKET description",
+              createdate: "2021-08-13 12:03:00",
+              master: true,
+              addchild: true,
+            },
+            {
+              id: 1000000017,
+              RefNo: "1.1.4.2",
+              code: "SOURCE",
+              name_en: "Source Maintenance",
+              name_th: "การบำรุงรักษาแหล่งที่มา",
+              description: "SOURCE description",
+              createdate: "2021-08-13 12:03:00",
+              master: true,
+              addchild: true,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 1000000018,
+      RefNo: "1.2",
+      code: "CFGSYS",
+      name_en: "System Configuration",
+      name_th: "การกำหนดค่าระบบ",
+      description: "CFGSYS description",
+      createdate: "2021-08-13 12:03:00",
+      master: true,
+      addchild: false,
+      children: [
+        {
+          id: 1000000019,
+          RefNo: "1.2.1",
+          code: "USER",
+          name_en: "User Management",
+          name_th: "การจัดการผู้ใช้",
+          description: "USER description",
+          createdate: "2021-08-13 12:03:00",
+          master: true,
+          addchild: true,
+        },
+        {
+          id: 1000000020,
+          RefNo: "1.2.2",
+          code: "ROLE",
+          name_en: "Role Management",
+          name_th: "การจัดการบทบาท",
+          description: "ROLE description",
+          createdate: "2021-08-13 12:03:00",
+          master: true,
+          addchild: true,
+        },
+      ],
+    },
+  ]);
+
+  // const updateProperty = useSelector((state) => state.reducer.property);
+  // const [property, setProperty] = React.useState(updateProperty);
+  const updateProperty = sessionStorage.getItem("property");
+  const [property, setProperty] = React.useState(
+    sessionStorage.getItem("property")
+  );
+
   React.useEffect(() => {
     if (themeBackground === "#FFFFFF") {
       setThemeState({
@@ -126,6 +366,16 @@ export const ProfileTableCompany = (props) => {
       setMainColor("#2D62ED");
     }
   }, [maincolor]);
+
+  React.useEffect(async () => {
+    console.log("useEffect");
+    let configdata = await getConfigurationByPropertyCode(
+      sessionStorage.getItem("auth"),
+      updateProperty
+    );
+    setData(configdata.content);
+    setProperty((prev) => updateProperty);
+  }, [updateProperty]);
 
   const classes = useStyles(themeState);
 
@@ -518,3 +768,16 @@ export const ProfileTableCompany = (props) => {
     </Container>
   );
 };
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    nextComponent: (comp) => dispatch(nextComponent(comp)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileTableCompany);
