@@ -1,0 +1,209 @@
+{
+  "titles": [{ "title": "12345" }, { "title": "John Doe" }],
+  "columns": [
+    { "title": "Category", "field": "Cat1" },
+    { "title": "SubCategory", "field": "Cat2" },
+    { "title": "OverlapCategory", "field": "Cat3" },
+    { "title": "Product Name", "field": "ProductDesc" },
+    { "align": "right", "title": "Sales Amount", "field": "Amount" },
+    { "align": "right", "title": "Freight", "field": "freightAmt" },
+    { "align": "right", "title": "Tax Amount", "field": "Tax Amount" },
+    { "align": "right", "title": "Extended Amount", "field": "Extended Amount" }
+  ],
+  "details": [
+    {
+      "total": {
+        "name": "cat 1 total",
+        "column": "Cat1",
+        "value": {
+          "Amount": "300.00",
+          "freightAmt": "252.32",
+          "Tax Amount": "21.00",
+          "Extended Amount": "273.32"
+        }
+      },
+      "sub": [
+        {
+          "total": {
+            "name": "sub cat 1 total",
+            "column": "Cat2",
+            "value": {
+              "Amount": "300.00",
+              "freightAmt": "252.32",
+              "Tax Amount": "21.00",
+              "Extended Amount": "273.32"
+            }
+          },
+          "sub": [
+            {
+              "total": {
+                "name": "sub cat 3 total",
+                "column": "Cat3",
+                "value": {
+                  "Amount": "300.00",
+                  "freightAmt": "252.32",
+                  "Tax Amount": "21.00",
+                  "Extended Amount": "273.32"
+                }
+              },
+              "sub": [
+                {
+                  "detail": [
+                    {
+                      "Cat1": "cat 1",
+                      "Cat2": "sub cat 1",
+                      "Cat3": "sub cat 3",
+                      "ProductDesc": "productdesc",
+                      "Amount": "300.00",
+                      "freightAmt": "252.32",
+                      "Tax Amount": "21.00",
+                      "Extended Amount": "273.32"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "total": {
+        "name": "cat 2 total",
+        "column": "Cat1",
+        "value": {
+          "Amount": "1700.00",
+          "freightAmt": "126.50",
+          "Tax Amount": "119.00",
+          "Extended Amount": "49.10"
+        }
+      },
+      "sub": [
+        {
+          "total": {
+            "name": "sub cat 2 total",
+            "column": "Cat2",
+            "value": {
+              "Amount": "1100.00",
+              "freightAmt": "101.20",
+              "Tax Amount": "77.00",
+              "Extended Amount": "44.55"
+            }
+          },
+          "sub": [
+            {
+              "total": {
+                "name": "sub cat 3 total",
+                "column": "Cat3",
+                "value": {
+                  "Amount": "1100.00",
+                  "freightAmt": "101.20",
+                  "Tax Amount": "77.00",
+                  "Extended Amount": "44.55"
+                }
+              },
+              "sub": [
+                {
+                  "detail": [
+                    {
+                      "Cat1": "cat 2",
+                      "Cat2": "sub cat 2",
+                      "Cat3": "sub cat 3",
+                      "ProductDesc": "productdesc",
+                      "Amount": "200.00",
+                      "freightAmt": "25.30",
+                      "Tax Amount": "14.00",
+                      "Extended Amount": "39.30"
+                    },
+                    {
+                      "Cat1": "cat 2",
+                      "Cat2": "sub cat 2",
+                      "Cat3": "sub cat 3",
+                      "ProductDesc": "productdesc",
+                      "Amount": "100.00",
+                      "freightAmt": "25.30",
+                      "Tax Amount": "7.00",
+                      "Extended Amount": "32.30"
+                    },
+                    {
+                      "Cat1": "cat 2",
+                      "Cat2": "sub cat 2",
+                      "Cat3": "sub cat 3",
+                      "ProductDesc": "productdesc555",
+                      "Amount": "300.00",
+                      "freightAmt": "25.30",
+                      "Tax Amount": "21.00",
+                      "Extended Amount": "46.30"
+                    },
+                    {
+                      "Cat1": "cat 2",
+                      "Cat2": "sub cat 2",
+                      "Cat3": "sub cat 3",
+                      "ProductDesc": "productdesc555",
+                      "Amount": "500.00",
+                      "freightAmt": "25.30",
+                      "Tax Amount": "35.00",
+                      "Extended Amount": "60.30"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "total": {
+            "name": "sub cat 3 total",
+            "column": "Cat2",
+            "value": {
+              "Amount": "600.00",
+              "freightAmt": "25.30",
+              "Tax Amount": "42.00",
+              "Extended Amount": "67.30"
+            }
+          },
+          "sub": [
+            {
+              "total": {
+                "name": "sub cat 3 total",
+                "column": "Cat3",
+                "value": {
+                  "Amount": "600.00",
+                  "freightAmt": "25.30",
+                  "Tax Amount": "42.00",
+                  "Extended Amount": "67.30"
+                }
+              },
+              "sub": [
+                {
+                  "detail": [
+                    {
+                      "Cat1": "cat 2",
+                      "Cat2": "sub cat 3",
+                      "Cat3": "sub cat 3",
+                      "ProductDesc": "productdesc555",
+                      "Amount": "600.00",
+                      "freightAmt": "25.30",
+                      "Tax Amount": "42.00",
+                      "Extended Amount": "67.30"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "grand_total": {
+    "name": "Grand Total",
+    "column": "Cat1",
+    "value": {
+      "Amount": "2000.00",
+      "freightAmt": "378.82",
+      "Tax Amount": "140.00",
+      "Extended Amount": "322.00"
+    }
+  }
+}

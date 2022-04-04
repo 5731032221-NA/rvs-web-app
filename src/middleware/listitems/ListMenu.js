@@ -121,6 +121,7 @@ function ListMenu() {
   const handleClickReport = () => {
     setSelectedIndex(8);
     setOpenReport(!openReport);
+    navigate("/reports");
   };
 
   const handleClickConfiguration = () => {

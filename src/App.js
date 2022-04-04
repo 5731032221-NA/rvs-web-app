@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import { Provider } from "react-redux";
 import UseToken from "./middleware/useToken";
 import configureStore from "./middleware/store";
+import Main from "./pages/Main";
 import Dashboard from "./pages/Dashboard";
 import Reservation from "./pages/Reservation";
 import Configuration from "./pages/configurations/Configuration";
@@ -14,7 +15,7 @@ import RoleManagement from "./pages/configurations/RoleManagement";
 import RoomManagement from "./pages/configurations/RoomManagement";
 import UserManagement from "./pages/configurations/UserManagement";
 
-import Main from "./pages/Main";
+import Reports from "./pages/Reports";
 
 import Farontdes from "./components/Farontdes/Farontdes";
 import ProfileTableIndividual from "./components/Profiles/ProfileTableIndividual";
@@ -60,6 +61,16 @@ function App() {
               element={
                 <Main>
                   <Farontdes />
+                </Main>
+              }
+            />
+
+            <Route
+              exact
+              path={`/reports`}
+              element={
+                <Main>
+                  <Reports />
                 </Main>
               }
             />
